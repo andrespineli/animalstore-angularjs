@@ -8,25 +8,21 @@
           <h2>Raças</h2>
           <p>Cadastrar nova raça</p>  
           <label>Nome</label><br>
-          <input type="text" ng-model="breed.name" class="form-control">
+          <input type="text" ng-model="breed.name" class="form-control" required>
         </div>
       </div>
       <div class="row">  
         <div class="col-md-12">                   
           <label>Descrição</label><br>
-          <input type="text" ng-model="breed.notes" class="form-control">
+          <input type="text" ng-model="breed.notes" class="form-control" required>
         </div>
       </div>
       <div class="row">              
         <div ng-init="getTypes()" class="col-md-12">  
-          <label>Tipo de Animal</label> 
-<!--           <select ng-model="breed.type_id"  class="form-control">
-            <option value="">--Selecione--</option> 
-            <option ng-repeat="t in types" ng-selected="breed.type_id == t.id" value="{{t.id}}">{{t.name}}</option> 
-          </select>    -->            
-          <select class="form-control" ng-model='breed.type_id' ng-options='t.name for t in types'>
-            <option value="">--Selecione--</option> 
-          </select>              
+          <label>Tipo de Animal</label>               
+          <select class="form-control" ng-model="breed.type_id" ng-options="type.id as type.name for type in types">
+            <option value="">--Selecione uma opção--</option>
+         </select>         
         </div>       
       </div>         
       <br>    	  	
