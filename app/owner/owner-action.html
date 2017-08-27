@@ -1,0 +1,130 @@
+<h2>Consulta Clientes/Animais</h2>  
+    
+<div class="col-md-12">       
+  <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+</div>               
+<br>
+<br>
+<div ng-init="getOwners()" ></div>
+<table class="table table-striped table-hover">          
+  <th class="col-md-3">Nome</th>  
+  <th class="col-md-3">Fone / Celular</th>    
+  <th class="col-md-6">Animais</th>                    
+  <th colspan="4" class="col-md-1">Informações</th>           
+    <tbody>        
+      <tr dir-paginate-start="o in owners | filter: searchKeyword |itemsPerPage:10 track by $index"> 
+        <td>         
+          {{o.name}}
+        </td>  
+        <td>         
+         <a href="tel:{{o.phone_number}}">
+          {{o.phone_number | phone}}
+        </a> 
+        <small ng-if="o.phone_number && o.cell_number">/</small> 
+        <a href="tel:{{o.cell_number}}">
+          {{o.cell_number | phone}}</a>
+        </td> 
+        <td>
+          <small style="font-size: 14px;" ng-repeat="a in d.animaisDoDono"> {{a.nome}}{{$last ? '' : ', '}}</small>                    
+        </td>               
+          <td>              
+            <td>                 
+              <a title="Exibir Animais" ng-click="listaDonosAnimais(d.id)" data-toggle="modal" data-target="#dono-modal" href=""><div style=" width:24px; height: 24px;  background-image: url('app/_images/icons/pata.png');"></div>
+              </a>   
+            </td>
+              <td>                 
+                <a title="Cadastrar Animais" href="#/cadastraranimais/{{d.id}}"><div style=" width:24px; height: 24px;  background-image: url('app/_images/icons/plus.png');"></div>
+                </a>  
+              </td>             
+            </td>                       
+        <td>         
+        </td>       
+        <tr ng-if="d.expande" dir-paginate-end="">          
+          <td colspan="5">            
+            <div  class="panel panel-info">  
+              <table class="table">
+              <tr bgcolor="#ccddff">                  
+                  <th class="col-md-2 small">Animais</th>                            
+              </tr>
+              <tr ng-repeat="a in d.animaisDoDono">
+                <td>{{a.nome}}</td>                                      
+              </tr>
+            </table>                  
+          </div>           
+        </td>   
+      </tr>           
+     </tbody>    
+  </table>  
+  <dir-pagination-controls
+    template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>       
+</body>
+ <!--Animais do dono -->
+    <div id="dono-close">    
+        <div class="modal fade" id="dono-modal" tabindex="-1" role="dialog" data-backdrop="static">
+            <div class="modal-dialog" id="modal">
+                <div style="width: 100%; position: absolute; padding: 10px; background-color: rgb(221, 221, 221);" >    
+                    <a title="Fechar pedido" ng-click="fecharModal()" href="">
+                        <div style="color: #000; margin-left: 98%; font-size: 20px;" class="glyphicon glyphicon-remove"></div>
+                    </a>                    
+                    <h3>Animais</h3>   
+                    <center><h4 ng-if="!animais">Este cliente não possuí animais cadastrados. Para cadastrar clique no <small style="vertical-align: middle; font-size: 42px; color: green;">+</small></h4></center>           
+                    <table ng-repeat="a in animais" class="table table-striped">
+                        <thead  style="background-color: #CCC; ">                       
+                          <tr>
+                            <th class="col-md-3 small">Nome</th>
+                            <th class="col-md-2 small">Tipo</th>
+                            <th class="col-md-2 small">Raça</th>
+                            <th class="col-md-3 small">Veterinário Responsável</th>
+                            <th colspan="4" class="col-md-2 small" align="right"><center>Opções</center></th>
+                          </tr>
+                        </thead>
+                        <tbody >  
+                          <tr>
+                            <td>{{a.nome}}</td>
+                            <td>{{a.tipo}}</td>
+                            <td>{{a.raca}}</td>
+                            <td>{{a.veterinario}}</td>                            
+                            <td>
+                               <a title="Editar Animal" ng-click="fecharModal()" class="glyphicon glyphicon-pencil" href="#/cadastraranimais/editar/{{a.id}}"></a>
+                            </td>
+                            <td>
+                               <a title="Consultas" ng-click="fecharModal()" class="glyphicon glyphicon-check" href="#/cadastrarconsulta/{{a.id}}"></a>
+                            </td>                        
+                          
+                            <td> 
+                                <form action="php/pdf/fichaAtendimento.php" method="POST" enctype="multipart/form-data">
+                                  <input type="text" class="hidden" value="{{animais.token}}" name="token">   
+                                  <input type="text" class="hidden" value="{{a.id}}" name="idAnimal">                                     
+                                    <button id="button" style="border:0px; color: #337ab7; background-color: transparent;" title="Gerar Ficha de Atendimento" type="submit" class="glyphicon glyphicon-list-alt">                                  
+                                    </button>
+                                </form>
+                            </td>                            
+                             <td>
+                               <a title="Excluir animal" ng-click="deletarAnimal(a.id, a.idDono)" class="glyphicon glyphicon-remove" href=""></a>
+                            </td>     
+
+                            </td>                            
+                          </tr>        
+                          <tr>
+                            <td colspan="8" class="jumbotron"><p style="font-size:16px;"><b>Observações:</b></p>{{a.observacoes}}</td>                            
+                          </tr>  
+                        </tbody>                   
+                    </table>
+                        </div>             
+                         
+                    </div>  
+                </div>                          
+                </div>
+            </div>
+        </div>
+    </div>  
+ 
+</html>
+
+
+
+

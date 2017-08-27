@@ -1,0 +1,36 @@
+<div class="container">
+  <div ng-init="findClinic()" class="form-group">  
+	
+	  <form ng-submit="updatePassword()">	  
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Opções de Entrada</h2>  
+	  			<p>Alterar senha</p>    
+					<label>Senha atual</label>
+					<input type="password" class="form-control" ng-model="clinic.password" required>		
+				</div>		  
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<label>Nova senha</label>
+					<input type="password" class="form-control input-sm" ng-model="clinic.password_new" required>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<label>Repita a nova senha</label>
+					<input type="password" class="form-control input-sm" ng-model="clinic.password_confirmation" required>	    
+				</div>
+			</div>
+			<div class="row">
+	      <div class="col-md-12" align="right"><br>     
+	      	<button type="submit" class="btn btn-primary">
+	          <div class="glyphicon glyphicon-floppy-saved"></div> 
+	          Salvar
+	        </button>		  		
+	      </div>
+	    </div>    
+		</form>	  
+	</div>                 
+</div>      
+

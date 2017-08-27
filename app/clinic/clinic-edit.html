@@ -1,0 +1,55 @@
+<div ng-init="findClinic()">   
+ 	<div class="form-group">          	  
+		<form ng-submit="clinicUpdate()"> 	 
+			<div class="row">	
+				<div class="col-md-12">
+				  <h2>Informações da clínica</h2>   			 
+				  <p>Alterar informações</p> 
+					<label>Nome Fantasia</label><br>
+				  <input type="text" ng-model="clinic.name" class="form-control" required>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<label>Usuário</label><br>
+			    <input type="text" ng-model="clinic.user_name"  class="form-control" disabled>		
+			    <a href="#/myclinic/username"><b>Alterar Usuário</b></a> 
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<label>Senha</label><br>
+			    <input type="text" value="••••••" class="form-control" disabled>		
+			    <a href="#/myclinic/password"><b>Alterar Senha</b></a> 
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<label>E-mail</label><br>
+			    <input type="email" ng-model="clinic.email"  class="form-control">			   
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<label>CNPJ</label><br>
+		      <input type="text" ng-model="clinic.document_number" class="form-control" ui-br-cnpj-mask>		 
+				</div>
+			</div>	
+		  	
+			<div class="row">
+	      <div class="col-md-12" align="right"><br>     
+	      	<button type="submit" class="btn btn-primary">
+	          <div class="glyphicon glyphicon-floppy-saved"></div> 
+	          Salvar
+	        </button>		  		
+	      </div>
+	    </div>    
+		</form>
+	</div>  
+</div>    
+
+

@@ -1,0 +1,27 @@
+<div ng-init="findBackupConfig()" class="form-group">          	  
+  <form ng-submit="backupConfigUpdate()"> 
+		<h2>Configurações de Backup</h2>  	  	
+		<div class="row">	
+			<div class="col-md-12">
+				<label>Diretório Núvem</label><br>
+			  <input type="text" ng-model="clinic.cloud_path" class="form-control" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<label>Diretório Mydump</label><br>
+		    <input type="text" ng-model="clinic.my_dump_path"  class="form-control" required>        
+			</div>
+		</div>		 	
+		<div class="row">
+      <div class="col-md-12" align="right"><br>     
+      	<button type="submit" class="btn btn-primary">
+          <div class="glyphicon glyphicon-floppy-saved"></div> 
+          Salvar
+        </button>		  		
+      </div>
+    </div>  
+	</form>
+</div>      
+ 
+

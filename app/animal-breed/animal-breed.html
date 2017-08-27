@@ -1,0 +1,82 @@
+<div class="container-fluid">   
+  <div ng-init="desCarregaBack()" class="form-group">  
+  <div ng-init="getBreeds()"></div>
+  <div ng-init="findBreedById()"></div>
+    <form ng-submit="breedRegister()">          
+      <div class="row">  
+        <div class="col-md-12">
+          <h2>Raças</h2>
+          <p>Cadastrar nova raça</p>  
+          <label>Nome</label><br>
+          <input type="text" ng-model="breed.name" class="form-control">
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-md-12">                   
+          <label>Descrição</label><br>
+          <input type="text" ng-model="breed.notes" class="form-control">
+        </div>
+      </div>
+      <div class="row">              
+        <div ng-init="getTypes()" class="col-md-12">  
+          <label>Tipo de Animal</label> 
+<!--           <select ng-model="breed.type_id"  class="form-control">
+            <option value="">--Selecione--</option> 
+            <option ng-repeat="t in types" ng-selected="breed.type_id == t.id" value="{{t.id}}">{{t.name}}</option> 
+          </select>    -->            
+          <select class="form-control" ng-model='breed.type_id' ng-options='t.name for t in types'>
+            <option value="">--Selecione--</option> 
+          </select>              
+        </div>       
+      </div>         
+      <br>    	  	
+     	<div class="row">
+        <div class="col-md-12" align="right">            
+          <button type="submit" class="btn btn-primary">
+            <div class="glyphicon glyphicon-floppy-saved"></div> 
+            Salvar
+          </button>       
+        </div>
+    	</div>     
+    </form>        
+    <p>Raças cadastradas</p>      
+    <table class="table table-striped">
+    <thead>
+      <tr>                
+        <th class="col-md-4 small">Raça</th>   
+        <th class="col-md-2 small">Tipo</th>       
+        <th class="col-md-4 small">Descrição</th> 
+        <th class="col-md-1 small">Opções</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr dir-paginate="b in breeds | filter: searchKeyword |itemsPerPage:5 track by $index">       
+        <td>{{b.name}}</td>      
+        <td>{{b.type}}</td>  
+        <td>{{b.notes}}</td>                    
+        <td>          
+          <center>                         
+            <a id="a-decoration" href="#/breeds/{{b.id}}">
+              <button  class="btn btn-primary btn-sm">
+                <div class="glyphicon glyphicon-pencil"></div>                            
+              </button>
+            </a>                        
+            <button ng-click="breedRemove(b.id, b.name)" class="btn btn-danger btn-sm">
+              <div class="glyphicon glyphicon-remove"></div>                          
+            </button>
+          </center>                                
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <dir-pagination-controls
+    template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+    max-size="5"
+    direction-links="true"
+    boundary-links="true" >
+  </dir-pagination-controls> 
+  </div>       
+</div>
+
+
+

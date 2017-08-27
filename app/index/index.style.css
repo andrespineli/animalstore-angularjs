@@ -1,0 +1,91 @@
+body {
+  background-color: transparent;
+}
+.alert {
+  top: 0;
+  margin-top: 60px;
+  margin-right: 5px;
+  position: fixed;
+  width: auto;  
+  right: 0;
+}
+
+#alert { 
+  margin-left: 70%;
+  margin-right: 10%;
+  width: auto;
+  position: absolute;
+  text-align: center;
+  z-index: 9999999;
+}
+
+.footer { 
+  color: #FFF;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #282828;;
+  text-align: center;
+}
+
+#navbar {
+  margin-top: 60px;
+}
+
+#loadBackground {       
+  background: url('../_images/desktop-back.jpg');  
+  background-repeat: no-repeat;  
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;     
+  transition: 1s opacity;
+  opacity: 0.9;
+  z-index: 999999;
+}  
+
+#loadBackgroundHome {       
+  background: url('../_images/home-desktop-back.jpg');  
+  background-repeat: no-repeat;  
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;     
+  transition: 1s opacity;
+  opacity: 0.9;
+  z-index: 999999;
+}  
+
+@media (max-width:600px) and (orientation: portrait ) { 
+  #loadBackground{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: url('../_images/mobile-back-portrait.jpg') no-repeat center center fixed;   
+    display: block;
+  }
+
+   #loadBackgroundHome{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: url('../_images/home-mobile-back-portrait.jpg') no-repeat center center fixed;   
+    display: block;
+  }
+}

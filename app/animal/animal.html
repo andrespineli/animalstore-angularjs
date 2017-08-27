@@ -1,0 +1,139 @@
+<!doctype html>
+<html ng-app="app">
+  <body  class="container-fluid">   
+  <div ng-init="desCarregaBack()" class="form-group">    
+<form ng-submit="cadastrarAnimais()">
+  
+ <div class="row">
+ <center>
+     <h2>Cadastrar Animais</h2>  
+ </center>
+      <div ng-init="selecionaAnimal()"></div>   
+
+    <div class="row">    
+        <div ng-init="listaVeterinario()" class="col-md-12">        
+           <label>Veternário Responsável</label>      
+          <select class="form-control"                
+                ng-model="animal.idVeterinario"
+                ng-change="listaRacasTipo()">      
+            <option value="">--Selecione--</option>         
+            <option ng-selected="{{animal.idVeterinario == v.id}}" 
+               ng-repeat="v in veterinarios"
+                value="{{v.id}}">
+              {{v.nome}}
+            </option>         
+        </select>          
+      </div>             
+    </div>
+
+    <div class="row">    
+        <div ng-init="listaTipos()" class="col-md-12">        
+          <label>Tipo de Animal</label>     
+          <select class="form-control"                
+                ng-model="animal.idTipo" 
+                ng-change="listaRacasTipo()">      
+            <option value="">--Selecione--</option>         
+            <option ng-selected="{{animal.idTipo == t.id}}" 
+               ng-repeat="t in tipos" 
+                value="{{t.id}}">
+              {{t.nome}}
+            </option>         
+        </select>          
+      </div>             
+    </div>
+
+    <div class="row">    
+        <div ng-init="listaVeterinario()" class="col-md-12">        
+          <label>Raça do Animal</label> 
+
+          <select class="form-control"                
+               ng-model="animal.idRaca">                     
+            <option value="">--Selecione--</option>         
+            <option ng-selected="{{animal.idRaca == r.id}}" 
+               ng-repeat="r in racas" value="{{r.id}}"
+                value="{{r.id}} track by r.nome">
+              {{r.nome}}
+
+            </option>         
+        </select>          
+      </div>             
+    </div>
+    
+    <div class="row">
+    <div class="col-md-12">    
+      <label>Nome</label><br>
+        <input type="text" ng-model="animal.nome" class="form-control">
+    </div>
+  </div>
+
+ <div class="row">
+    <div class="col-md-12">    
+      <label>Alimentação</label><br>
+        <input type="text" ng-model="animal.alimentacao" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+            <div class="col-md-12">        
+              <label>Data de Nascimento/Idade</label>
+                  <input type="text" ng-model="animal.dataNascimento" class="form-control">                         
+               </div> 
+          </div>
+
+  <div class="row">    
+        <div class="col-md-12">        
+          <label>Sexo</label>          
+          <select class="form-control" ng-model="animal.sexo">
+          <option value="">--Selecione--</option>  
+          <option value="1">Macho</option>
+          <option value="2">Fêmea</option> 
+          </select>
+        </div>      
+   </div>             
+ 
+
+  <div class="row">
+    <div class="col-md-12">    
+      <label>Peso</label><br>
+        <input type="text" ng-model="animal.peso" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">    
+      <label>Coloração</label><br>
+        <input type="text" ng-model="animal.coloracao" class="form-control">
+    </div>
+  </div>
+
+
+  <div class="row"> 
+    <div class="col-md-12">
+        <label>Obserções</label><br>
+        <textarea style="max-height: 50px;" class="form-control" ng-model="animal.observacoes"></textarea>        
+    </div>
+  </div>         
+         </div>
+    
+	  	
+	  	  <div class="row">
+            <div class="col-md-12">       
+	  		<center>
+
+          <br>     
+	  			<button type="submit" class="btn btn-primary"><div class="glyphicon glyphicon-floppy-saved"></div> Salvar</button>	
+	  		</center> 
+      </div>
+	  	</div>
+	  </div>	  
+	</div>	
+</form>
+</div>                 
+</div>   
+  
+  </body>
+ 
+</html>
+
+
+

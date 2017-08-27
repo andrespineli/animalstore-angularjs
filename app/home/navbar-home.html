@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid" ng-controller="HomeCtrl" ng-init="getClinic()">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand logo" href="#/">AnimalStore</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">      
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="">Cadastrar <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+              <li><a href="#/vets">Veterinarios</a></li>
+              <li><a href="#/owners">Clientes</a></li>   
+              <li><a href="#/types">Tipos de Animal</a></li>   
+              <li><a href="#/breeds">Raças</a></li>       
+            </ul>
+        </li>       
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="">Consultar <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+              <li><a href="#/owner/actions">Clientes/Animais</a></li>  
+            </ul>
+        </li>       
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="#/myclinic">Você está conectado como <b>{{clinic.name}}</b></a></li>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="">Opções <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+              <li><a href="#/myclinic"><div class="glyphicon glyphicon-info-sign"></div> Minhas informações</a></li>   
+              <li><a href="#/backup"><div class="glyphicon glyphicon-floppy-open"></div> Backup</a></li>                                                  
+              <li><a ng-click="logout()" href=""><div class="glyphicon glyphicon-off"></div> Sair</a></li>     
+            </ul>
+        </li>               
+      </ul>
+    </div>
+  </div>
+</nav>

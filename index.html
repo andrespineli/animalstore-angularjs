@@ -1,0 +1,127 @@
+<!doctype html>
+<html ng-app="animalStoreApp">
+  <title>AnimalSotre</title>
+  <head>    
+
+      <meta name="description" content="AnimalStore - Uma plataforma inteligente para gerenciamento de clínicas veterinárias." />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">    
+
+      <!-- css vendor -->
+      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" /> 
+      <link rel="stylesheet" href="node_modules/uikit/dist/css/uikit.css" /> <!-- background-color removido da tag html - uikit -->
+      <link rel="stylesheet" href="node_modules/jquery-confirm/css/jquery-confirm.css" />
+      <link rel="stylesheet" href="node_modules/jquery-ui/jquery-ui.min.css" />           
+      
+      <!-- css views -->
+      <link rel="stylesheet" href="app/animal/animal.style.css"> 
+      <link rel="stylesheet" href="app/backup/backup.style.css"> 
+      <link rel="stylesheet" href="app/clinic/clinic.style.css"> 
+      <link rel="stylesheet" href="app/error/error.style.css"> 
+      <link rel="stylesheet" href="app/home/home.style.css"> 
+      <link rel="stylesheet" href="app/index/index.style.css"> 
+      <link rel="stylesheet" href="app/login/login.style.css"> 
+      <link rel="stylesheet" href="app/owner/owner.style.css"> 
+      <link rel="stylesheet" href="app/vet/vet.style.css">     
+
+      <!--favicon-->
+      <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+      <link rel="manifest" href="favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <!--/favicon-->
+  </head>
+
+  <!-- navbar login -->  
+  <div id="navbar" 
+       ng-controller="MainCtrl"        
+       ng-hide="isLogged()"          
+       ng-include src="'app/login/navbar-login.html'">         
+  </div>
+
+  <!-- navbar home -->  
+  <div id="navbar" 
+       ng-controller="MainCtrl"       
+       ng-show="isLogged()"               
+       ng-include src="'app/home/navbar-home.html'">        
+  </div>
+
+  <!-- body/alert-div/ng-view --> 
+  <body id="unLoadbackground" class="container">          
+    <div class="container" id="alert"></div>
+    <div ng-view></div>          
+  </body>   
+  
+  <!-- footer -->
+  <div class="container">
+    <nav style="color: #FFF;" class="navbar navbar-inverse navbar-fixed-bottom">
+      <center>AnimalStore | Alpha V1</center>        
+    </nav>
+  </div>
+
+  <div ng-controller="MainCtrl" ng-init="watchAuthTokenExpiration()"></div>
+
+  <!-- vendor -->
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-route/angular-route.js"></script>
+  <script src="node_modules/angular-resource/angular-resource.js"></script>
+  <script src="node_modules/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script src="node_modules/angular-utils-pagination/dirPagination.js"></script>
+  <script src="node_modules/angular-input-masks/releases/angular-input-masks-standalone.js"></script> 
+  <script src="node_modules/angular-input-masks/angular-locale_pt-br.js"></script>  
+  <script src="node_modules/ngstorage/ngStorage.js"></script> 
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/jquery-confirm/dist/jquery-confirm.min.js" ></script>
+  <script src="node_modules/jquery-ui/jquery-ui.min.js" ></script>  
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script> 
+  <script src="node_modules/uikit/dist/js/uikit.min.js"></script>
+  <script src="node_modules/uikit/dist/js/uikit-icons.min.js"></script>
+  
+  <!-- app module -->
+  <script src="js/app.js"></script>
+
+  <!-- routes -->
+  <script src="js/route.js"></script>
+
+    <!-- filters -->
+  <script src="js/filters/date.filter.js"></script>
+  <script src="js/filters/phone.filter.js"></script>
+
+
+  <!-- services -->
+  <script src="js/services/auth.js"></script>
+  <script src="js/services/authInterceptor.js"></script> 
+  <script src="js/services/alert.js"></script> 
+  <script src="js/services/Api.js"></script> 
+  <script src="js/services/fileUpload.js"></script>
+
+  <!-- controllers -->
+  <script src="js/controllers/main.controller.js"></script>
+  <script src="app/animal/animal.controller.js"></script>
+  <script src="app/animal-type/animal-type.controller.js"></script>
+  <script src="app/animal-breed/animal-breed.controller.js"></script>
+  <script src="app/backup/backup.controller.js"></script>
+  <script src="app/clinic/clinic.controller.js"></script>
+  <script src="app/error/error.controller.js"></script>
+  <script src="app/home/home.controller.js"></script>
+  <script src="app/index/index.controller.js"></script>
+  <script src="app/login/login.controller.js"></script>
+  <script src="app/owner/owner.controller.js"></script>
+  <script src="app/vet/vet.controller.js"></script>
+
+</html>
+
+
