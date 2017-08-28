@@ -1,0 +1,51 @@
+<div id="owner-animals-close">    
+  <div class="modal fade" id="owner-animals-modal" tabindex="-1" role="dialog" data-backdrop="static">
+      <div class="modal-dialog" id="modal">
+        <div style="width: 100%; position: absolute; padding: 10px; background-color: rgb(221, 221, 221);" >    
+          <a title="Fechar" data-toggle="modal" data-target="#owner-animals-modal" href="">
+            <div style="color: #000; margin-left: 98%; font-size: 20px;" class="glyphicon glyphicon-remove"></div>
+          </a>                    
+          <h3>Animais</h3>   
+          <center><h4 ng-if="!animalsOfOwner">Este cliente não possuí animais cadastrados. Para cadastrar clique no <small style="vertical-align: middle; font-size: 42px; color: green;">+</small></h4></center>           
+            <table ng-repeat="a in animalsOfOwner" class="table table-striped">
+              <thead  style="background-color: #CCC; ">                       
+                <tr>
+                  <th class="col-md-3 small">Nome</th>
+                  <th class="col-md-2 small">Tipo</th>
+                  <th class="col-md-2 small">Raça</th>
+                  <th class="col-md-3 small">Veterinário Responsável</th>
+                  <th colspan="4" class="col-md-2 small" align="right"><center>Opções</center></th>
+                </tr>
+                </thead>
+                <tbody>  
+                  <tr>
+                    <td>{{a.name}}</td>
+                    <td>{{a.type}}</td>
+                    <td>{{a.breed}}</td>
+                    <td>{{a.vet}}</td>                            
+                    <td>
+                      <a title="Editar Animal" ng-click="fecharModal()" class="glyphicon glyphicon-pencil" href="#/cadastraranimais/editar/{{a.id}}"></a>
+                    </td>
+                    <td>
+                      <a title="Consultas" ng-click="fecharModal()" class="glyphicon glyphicon-check" href="#/cadastrarconsulta/{{a.id}}"></a>
+                    </td>                     
+                    <td> 
+                      <form action="php/pdf/fichaAtendimento.php" method="POST" enctype="multipart/form-data">
+                        <input type="text" class="hidden" value="{{animais.token}}" name="token">   
+                        <input type="text" class="hidden" value="{{a.id}}" name="idAnimal">                                     
+                        <button id="button" style="border:0px; color: #337ab7; background-color: transparent;" title="Gerar Ficha de Atendimento" type="submit" class="glyphicon glyphicon-list-alt">                                  
+                        </button>
+                      </form>
+                    </td>                            
+                      <td><a title="Excluir animal" ng-click="deletarAnimal(a.id, a.idDono)" class="glyphicon glyphicon-remove" href=""></a></td>     
+                    </td>                            
+                  </tr><tr><td colspan="8" class="jumbotron"><p style="font-size:16px;"><b>Observações:</b></p>{{a.notes}}</td></tr>  
+                </tbody>                   
+              </table>
+            </div>                               
+          </div>  
+        </div>                          
+      </div>
+    </div>
+  </div>
+</div>  

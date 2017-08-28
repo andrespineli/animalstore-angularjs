@@ -70,6 +70,11 @@ angular.module(
         controller: 'OwnerCtrl',
         controllerAs: 'owner.controller'
       })
+      .when('/owner/:owner_id/animals', {
+        templateUrl: 'app/animal/animal.html',
+        controller: 'AnimalCtrl',
+        controllerAs: 'animal.controller'
+      })
       .when('/types', {
         templateUrl: 'app/animal-type/animal-type.html',
         controller: 'TypeCtrl',
