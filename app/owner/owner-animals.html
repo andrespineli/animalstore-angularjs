@@ -24,10 +24,10 @@
                     <td>{{a.breed}}</td>
                     <td>{{a.vet}}</td>                            
                     <td>
-                      <a title="Editar Animal" ng-click="fecharModal()" class="glyphicon glyphicon-pencil" href="#/cadastraranimais/editar/{{a.id}}"></a>
+                      <a title="Editar Animal" data-toggle="modal" data-target="#owner-animals-modal" class="glyphicon glyphicon-pencil" href="#/owner/{{a.owner_id}}/animals/{{a.id}}"></a>
                     </td>
                     <td>
-                      <a title="Consultas" ng-click="fecharModal()" class="glyphicon glyphicon-check" href="#/cadastrarconsulta/{{a.id}}"></a>
+                      <a title="Consultas" data-toggle="modal" data-target="#owner-animals-modal" class="glyphicon glyphicon-check" href="#/cadastrarconsulta/{{a.id}}"></a>
                     </td>                     
                     <td> 
                       <form action="php/pdf/fichaAtendimento.php" method="POST" enctype="multipart/form-data">

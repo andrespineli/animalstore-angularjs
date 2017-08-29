@@ -1,82 +1,68 @@
-<form ng-submit="cadastrarAnimais()">  
+<form ng-submit="animalRegister()">  
  <div class="row">
-  <center>
-      <h2>Cadastrar Animais</h2>  
-  </center>
+  <h2>Animais</h2>  
+  <p>Cadastrar</p>
   <div ng-init="selecionaAnimal()"></div>   
 
   <div class="row">    
-    <div ng-init="listaVeterinario()" class="col-md-12">        
-      <label>Veternário Responsável</label>      
-      <select class="form-control"                
-              ng-model="animal.idVeterinario"
-              ng-change="listaRacasTipo()">      
-        <option value="">--Selecione--</option>         
-        <option ng-selected="{{animal.idVeterinario == v.id}}" 
-                ng-repeat="v in veterinarios"
-                value="{{v.id}}">
-          {{v.nome}}
-        </option>         
-      </select>          
+    <div ng-init="getVets()" class="col-md-12" ng-controller="VetCtrl">        
+      <label>Veternário Responsável</label>             
+      <select class="form-control" ng-model="animal.vet_id" ng-options="vet.id as vet.name for vet in vets">
+        <option value="">--Selecione uma opção--</option>
+      </select>        
     </div>             
   </div>
 
   <div class="row">    
-    <div ng-init="listaTipos()" class="col-md-12">        
+    <div ng-init="getTypes()" class="col-md-12" ng-controller="TypeCtrl">        
       <label>Tipo de Animal</label>     
-      <select class="form-control"                
-              ng-model="animal.idTipo" 
-              ng-change="listaRacasTipo()">      
-        <option value="">--Selecione--</option>         
-        <option ng-selected="{{animal.idTipo == t.id}}" 
-                ng-repeat="t in tipos" 
-                value="{{t.id}}">
-          {{t.nome}}
-        </option>         
-      </select>          
+      <select class="form-control" 
+              ng-change="findBreedsByType()" 
+              ng-model="animal.type_id" 
+              ng-options="type.id as type.name for type in types"
+              ng-controller="AnimalCtrl">
+        <option value="">--Selecione uma opção--</option>
+      </select>        
     </div>             
   </div>
-
+ 
   <div class="row">    
-    <div ng-init="listaVeterinario()" class="col-md-12">        
+    <div ng-init="getBreeds()" class="col-md-12" ng-controller="BreedCtrl">        
       <label>Raça do Animal</label> 
-      <select class="form-control"                
-              ng-model="animal.idRaca">                     
-        <option value="">--Selecione--</option>         
-        <option ng-selected="{{animal.idRaca == r.id}}" 
-                ng-repeat="r in racas" value="{{r.id}}"
-                value="{{r.id}} track by r.nome">
-          {{r.nome}}
-        </option>         
-      </select>          
+      <select class="form-control" 
+              ng-model="animal.breed_id" 
+              ng-options="breed.id as breed.name for breed in breeds"
+              ng-controller="AnimalCtrl">
+        <option value="">--Selecione uma opção--</option>
+      </select>     
     </div>             
   </div>
-    
+    <pre>{{animal | json}}</pre>
   <div class="row">
     <div class="col-md-12">    
       <label>Nome</label><br>
-      <input type="text" ng-model="animal.nome" class="form-control">
+      <input type="text" ng-model="animal.name" class="form-control">
     </div>
   </div>
 
  <div class="row">
     <div class="col-md-12">    
       <label>Alimentação</label><br>
-      <input type="text" ng-model="animal.alimentacao" class="form-control">
+      <input type="text" ng-model="animal.food_types" class="form-control">
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">        
       <label>Data de Nascimento/Idade</label>
-      <input type="text" ng-model="animal.dataNascimento" class="form-control">                         
+      <input type="text" ng-model="animal.birth_date" class="form-control">                         
     </div> 
   </div>
 
   <div class="row">    
     <div class="col-md-12">        
       <label>Sexo</label>          
-      <select class="form-control" ng-model="animal.sexo">
+      <select class="form-control" ng-model="animal.gender">
         <option value="">--Selecione--</option>  
         <option value="1">Macho</option>
         <option value="2">Fêmea</option> 
@@ -87,21 +73,21 @@
   <div class="row">
     <div class="col-md-12">    
       <label>Peso</label><br>
-      <input type="text" ng-model="animal.peso" class="form-control">
+      <input type="text" ng-model="animal.weight" class="form-control">
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">    
       <label>Coloração</label><br>
-      <input type="text" ng-model="animal.coloracao" class="form-control">
+      <input type="text" ng-model="animal.color" class="form-control">
     </div>
   </div>
 
   <div class="row"> 
     <div class="col-md-12">
       <label>Obserções</label><br>
-      <textarea style="max-height: 50px;" class="form-control" ng-model="animal.observacoes"></textarea>        
+      <textarea style="max-height: 50px;" class="form-control" ng-model="animal.notes"></textarea>        
     </div>
   </div>      
 
