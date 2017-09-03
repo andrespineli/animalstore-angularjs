@@ -1,6 +1,22 @@
 angular.module('animalStoreApp')
 .controller('AnimalCtrl', function (Alert, Auth, Api, $scope, $rootScope, $http, $location, $routeParams) {
 
+  $scope.getAnimalsOfOwner = function () {         
+    if($routeParams.owner_id){
+      $http.get(Api.setUriAndReturnAddress('owners/'+$routeParams.owner_id+'/animals'))
+      .then(function onSuccess(response) {    
+        if (response.data == '') {
+          Alert.send('Nenhum animal cadastrado', 'info', 3);
+          console.log(response)                
+        }
+        $scope.animalsOfOwner = response.data;        
+      })
+      .catch(function onError(response) { 
+        console.log(response);               
+      });             
+    }      
+  }
+
   $scope.findAnimalById = function () {
     if ($routeParams.animal_id) {
       $http.get(Api.setUriAndReturnAddress('animals/' + $routeParams.animal_id))
@@ -46,24 +62,20 @@ angular.module('animalStoreApp')
     });             
   }
 
-  $scope.animalRemove = function (animal) {    
+  $scope.animalRemove = function (animal_id, animal_name) {    
     $.confirm({      
     theme: 'dark',   
-    title: 'Deseja realmente excluir o animal: '+animal.name+'?',      
+    title: 'Deseja realmente excluir o animal: '+animal_name+'?',      
     content: '',
     buttons: {                
       'sim': {
         btnClass: 'btn-warning',
           action: function(){                                      
-            $http.delete(Api.setUriAndReturnAddress('animals/' + animal.id))
-            .then(function onSuccess(response) {                                 
-              Alert.send('O Animal: '+animal.name+' foi excluido', 'danger', 3);        
-              for (var index = 0; index < $scope.animalsOfOwner.length; index++) {
-                if ($scope.animalsOfOwner[index] == animal.id){
-                  $scope.animalsOfOwner.splice(index, 1);
-                  alert('teste');
-                }
-              }
+            $http.delete(Api.setUriAndReturnAddress('animals/' + animal_id))
+            .then(function onSuccess(response) {                     
+              $scope.getAnimalsOfOwner();            
+              Alert.send('O Animal: '+animal_name+' foi excluido', 'danger', 3);       
+              
             })
             .catch(function onError(response) {
               console.log(response);

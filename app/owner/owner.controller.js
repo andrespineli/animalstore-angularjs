@@ -30,9 +30,6 @@ angular.module('animalStoreApp')
       });             
     }
 
-    $scope.getAnimalsOfOwner = function (animalsOfOwner) {         
-      $scope.animalsOfOwner = animalsOfOwner;      
-    }
 
     $scope.findOwnerById = function () {
       if ($routeParams.owner_id) {

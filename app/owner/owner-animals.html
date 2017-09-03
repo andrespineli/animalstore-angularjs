@@ -1,20 +1,12 @@
 
-<div class="modal fade" id="owner-animals-modal" tabindex="-1" role="dialog" data-backdrop="static">
-<div class="modal-dialog modal-lg" id="modal">
-  <!-- Modal content-->
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Animais</h4>
-    </div>
-    <div class="modal-body">
+      <div ng-init="getAnimalsOfOwner()" ></div>
       <div class="animal-list">
         <div class="row" id="animal-list-header">
             <div class="col-md-3">Nome</div>
             <div class="col-md-2">Tipo</div>
             <div class="col-md-2">Raça</div>
-            <div class="col-md-3">Veterinário</div>
-            <div class="col-md-2" align="right">Opções</div>
+            <div class="col-md-4">Veterinário</div>
+            <div class="col-md-1" align="right">Opções</div>
         </div>
         <hr>
         <div dir-paginate="a in animalsOfOwner | filter: searchKeyword |itemsPerPage:2 track by $index">
@@ -22,8 +14,8 @@
               <div class="col-md-3">{{a.name}}</div>
               <div class="col-md-2">{{a.type}}</div>
               <div class="col-md-2">{{a.breed}}</div>
-              <div class="col-md-3">{{a.vet}}</div>
-              <div class="col-md-2" id="animals-modal-options" align="right">
+              <div class="col-md-4">{{a.vet}}</div>
+              <div class="col-md-1" id="animals-modal-options" align="right">
 
                 <a id="option-icon" 
                    title="Editar Animal"               
@@ -51,7 +43,7 @@
 
                 <a id="option-icon" 
                    title="Excluir animal" 
-                   ng-click="animalRemove(a)" 
+                   ng-click="animalRemove(a.id, a.name)" 
                    ng-controller="AnimalCtrl"
                    class="glyphicon glyphicon-remove btn btn-danger" 
                    href="">
@@ -69,7 +61,3 @@
           boundary-links="true" >
         </dir-pagination-controls> 
       </div>             
-    </div>
-  </div>
-</div>
-</div>

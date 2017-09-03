@@ -21,7 +21,8 @@
       <select class="form-control" 
               ng-change="findBreedsByType()" 
               ng-model="$parent.animal.type_id" 
-              ng-options="type.id as type.name for type in types">
+              ng-options="type.id as type.name for type in types"
+              ng-controller="BreedCtrl">
         <option value="">--Selecione uma opção--</option>
       </select>        
     </div>             

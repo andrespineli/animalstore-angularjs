@@ -21,16 +21,15 @@
       <td><small style="font-size: 14px;" ng-repeat="a in o.animals"> {{a.name}}{{$last ? '' : ', '}}</small></td>               
         <td>              
           <td>                 
-            <a title="Exibir Animais" 
-               ng-click="getAnimalsOfOwner(o.animals)" 
+            <a title="Exibir Animais"                
                data-toggle="modal" 
                data-target="#owner-animals-modal" 
-               href="">              
+               href="#/owner/{{o.id}}/animals">              
               <i id="i" class="fa fa-paw fa-2x" aria-hidden="true"></i> 
             </a>   
           </td>
           <td>                 
-            <a title="Cadastrar Animais" href="#/owner/{{o.id}}/animals">                 
+            <a title="Cadastrar Animais" href="#/owner/{{o.id}}/animal">                 
               <i id="i" class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>                  
             </a>  
           </td>             
@@ -45,4 +44,3 @@
        direction-links="true"
        boundary-links="true" >
   </dir-pagination-controls>      
-  <div ng-include src="'app/owner/owner-animals.html'"><div>   
