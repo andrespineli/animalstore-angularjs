@@ -45,6 +45,19 @@ angular.module('animalStoreApp')
       }            
     }
 
+    $scope.findBreedsByType = function () {	
+      if ($scope.animal.type_id) {
+        $http.get(Api.setUriAndReturnAddress('animals/types/' + $scope.animal.type_id + '/breeds'))
+        .then(function onSuccess(response) {  			 
+          $rootScope.breeds = response.data;  
+          console.log(response.data);      
+        })
+        .catch(function onError(response) {        
+          console.log(response);
+        });        
+      }            
+    }
+
     $scope.breedRegister = function () {     
       if (!$routeParams.breed_id) {
         var data = $scope.breed;

@@ -12,7 +12,7 @@ angular.module('animalStoreApp')
     // Service logic
     // ...
 
-    var apiAddress = 'http://localhost:8000/api/v1/';
+    var apiAddress = 'http://animalstoreapi.upapp.com.br:8000/';
       return {
         setUriAndReturnAddress: function(uri) {
           return apiAddress+uri;
