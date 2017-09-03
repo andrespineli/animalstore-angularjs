@@ -1,52 +1,23 @@
 angular.module('animalStoreApp')
 .controller('AnimalCtrl', function (Alert, Auth, Api, $scope, $rootScope, $http, $location, $routeParams) {
 
-	$scope.getVets = function () {         
-		$http.get(Api.setUriAndReturnAddress('vets'))
-		.then(function onSuccess(response) {    
-			if (response.data.data == '') {
-				Alert.send('Nenhum veterinário cadastrado', 'info', 3);
-			}
-			$scope.vets = response.data.data;        
-		})
-		.catch(function onError(response) { 
-		console.log(response)       
-			
-		});             
-	}
-	
-
-  $scope.findBreedById = function () {
-    if ($routeParams.breed_id) {
-      $http.get(Api.setUriAndReturnAddress('animals/breeds/' + $routeParams.breed_id))
+  $scope.findAnimalById = function () {
+    if ($routeParams.animal_id) {
+      $http.get(Api.setUriAndReturnAddress('animals/' + $routeParams.animal_id))
       .then(function onSuccess(response) {    
-        $scope.breed = '';
-        $scope.breed = response.data;  
-        console.log(response.data.type_id);      
+        response.data.gender = response.data.gender.toString();        
+        $scope.animal = response.data;    
+        console.log(response);    
       })
       .catch(function onError(response) {        
         console.log(response);
       });        
-    }            
-	}
-
-	$scope.findBreedsByType = function () {	
-    if ($scope.animal.type_id) {
-      $http.get(Api.setUriAndReturnAddress('animals/types/' + $scope.animal.type_id + '/breeds'))
-      .then(function onSuccess(response) {  			 
-				$rootScope.breeds = response.data;  
-        console.log(response.data);      
-      })
-      .catch(function onError(response) {        
-        console.log(response);
-      });        
-    }            
-	}
-	
-	
+    }                      
+  }
 
   $scope.animalRegister = function () {     
     if (!$routeParams.animal_id) {
+      $scope.animal.owner_id = $routeParams.owner_id;
       var data = $scope.animal;
       $http.post(Api.setUriAndReturnAddress('animals'), data)
       .then(function onSuccess(response) {    
@@ -59,36 +30,40 @@ angular.module('animalStoreApp')
         console.log(response);
       });        
     } else {
-      $scope.breedUpdate();   
-    }          
-       
+      $scope.animalUpdate();   
+    }                 
   }
 
-  $scope.breedUpdate = function () {         
-    var data = $scope.breed;
-    $http.put(Api.setUriAndReturnAddress('animals/breeds/' + $routeParams.breed_id), data)
+  $scope.animalUpdate = function () {         
+    var data = $scope.animal;
+    $http.put(Api.setUriAndReturnAddress('animals/' + $routeParams.animal_id), data)
     .then(function onSuccess(response) {            
-      $location.path('/breeds');        
-      Alert.send('Raça alterada', 'warning', 3);          
+      $location.path('/owner/actions');        
+      Alert.send('Animal alterado', 'warning', 3);          
     })
     .catch(function onError(response) {
       console.log(response);
     });             
   }
 
-  $scope.breedRemove = function (breed_id, breed_name) {    
+  $scope.animalRemove = function (animal) {    
     $.confirm({      
     theme: 'dark',   
-    title: 'Deseja realmente excluir a raça: '+breed_name+'?',      
+    title: 'Deseja realmente excluir o animal: '+animal.name+'?',      
     content: '',
     buttons: {                
       'sim': {
         btnClass: 'btn-warning',
           action: function(){                                      
-            $http.delete(Api.setUriAndReturnAddress('animals/breeds/' + breed_id))
-            .then(function onSuccess(response) {    
-              $scope.getbreeds();                              
-              Alert.send('A raça: '+breed_name+' foi excluido', 'danger', 3);          
+            $http.delete(Api.setUriAndReturnAddress('animals/' + animal.id))
+            .then(function onSuccess(response) {                                 
+              Alert.send('O Animal: '+animal.name+' foi excluido', 'danger', 3);        
+              for (var index = 0; index < $scope.animalsOfOwner.length; index++) {
+                if ($scope.animalsOfOwner[index] == animal.id){
+                  $scope.animalsOfOwner.splice(index, 1);
+                  alert('teste');
+                }
+              }
             })
             .catch(function onError(response) {
               console.log(response);
@@ -100,7 +75,8 @@ angular.module('animalStoreApp')
           action: function(){}
         },            
       }
-    });              
+    });            
   }
+
 
 });

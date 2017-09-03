@@ -1,9 +1,22 @@
-#pet-icon {
-    width: 32px; 
-    height: 24px;         
+#i {
+    color: #000;
 }
 
-#plus-icon {
-    width: 36px; 
-    height: 24px;          
+.animal-list {
+    padding: 2%;
+}
+
+#animal-list-header {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#option-icon {
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+#animals-modal-options {    
+    line-height: 30px;
+    text-align: center;
 }

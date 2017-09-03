@@ -1,6 +1,19 @@
 angular.module('animalStoreApp')
-  .controller('VetCtrl', function (Alert, Auth, Api, $scope, $http, $location, $routeParams) {
+  .controller('VetCtrl', function (Alert, Auth, Api, $scope, $rootScope, $http, $location, $routeParams) {
 
+    $scope.getVets = function () {         
+      $http.get(Api.setUriAndReturnAddress('vets'))
+      .then(function onSuccess(response) {    
+        if (response.data.data == '') {
+          Alert.send('Nenhum veterinário cadastrado', 'info', 3);
+        }
+        $scope.vets = response.data.data;        
+      })
+      .catch(function onError(response) { 
+      console.log(response)       			
+      });             
+    }  
+   
     $scope.findVetById = function () {
       if ($routeParams.vet_id) {
         $http.get(Api.setUriAndReturnAddress('vets/' + $routeParams.vet_id))
@@ -10,8 +23,7 @@ angular.module('animalStoreApp')
         .catch(function onError(response) {        
           console.log(response);
         });        
-      }         
-             
+      }                      
     }
 
     $scope.vetRegister = function () {     
@@ -28,8 +40,7 @@ angular.module('animalStoreApp')
         });        
       } else {
         $scope.vetUpdate();  
-      }
-         
+      }         
     }
 
     $scope.vetUpdate = function () {         
@@ -68,9 +79,7 @@ angular.module('animalStoreApp')
             action: function(){}
           },            
         }
-      });               
-      
-      
+      });                  
     }
 
   });

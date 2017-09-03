@@ -2,14 +2,16 @@
  <div class="row">
   <h2>Animais</h2>  
   <p>Cadastrar</p>
-  <div ng-init="selecionaAnimal()"></div>   
+  <div ng-init="findAnimalById()"></div>   
 
   <div class="row">    
     <div ng-init="getVets()" class="col-md-12" ng-controller="VetCtrl">        
       <label>Veternário Responsável</label>             
-      <select class="form-control" ng-model="animal.vet_id" ng-options="vet.id as vet.name for vet in vets">
+      <select class="form-control" 
+              ng-model="$parent.animal.vet_id"                  
+              ng-options="vet.id as vet.name for vet in vets">             
         <option value="">--Selecione uma opção--</option>
-      </select>        
+      </select>         
     </div>             
   </div>
 
@@ -18,9 +20,8 @@
       <label>Tipo de Animal</label>     
       <select class="form-control" 
               ng-change="findBreedsByType()" 
-              ng-model="animal.type_id" 
-              ng-options="type.id as type.name for type in types"
-              ng-controller="AnimalCtrl">
+              ng-model="$parent.animal.type_id" 
+              ng-options="type.id as type.name for type in types">
         <option value="">--Selecione uma opção--</option>
       </select>        
     </div>             
@@ -30,14 +31,13 @@
     <div ng-init="getBreeds()" class="col-md-12" ng-controller="BreedCtrl">        
       <label>Raça do Animal</label> 
       <select class="form-control" 
-              ng-model="animal.breed_id" 
-              ng-options="breed.id as breed.name for breed in breeds"
-              ng-controller="AnimalCtrl">
+              ng-model="$parent.animal.breed_id" 
+              ng-options="breed.id as breed.name for breed in breeds">
         <option value="">--Selecione uma opção--</option>
       </select>     
     </div>             
   </div>
-    <pre>{{animal | json}}</pre>
+  
   <div class="row">
     <div class="col-md-12">    
       <label>Nome</label><br>
@@ -65,15 +65,18 @@
       <select class="form-control" ng-model="animal.gender">
         <option value="">--Selecione--</option>  
         <option value="1">Macho</option>
-        <option value="2">Fêmea</option> 
+        <option value="0">Fêmea</option> 
       </select>
     </div>      
   </div>             
 
   <div class="row">
     <div class="col-md-12">    
-      <label>Peso</label><br>
-      <input type="text" ng-model="animal.weight" class="form-control">
+      <label>Peso</label><br>    
+      <div class="input-group">
+        <input type="text" maxlength="8" ng-model="animal.weight" class="form-control" aria-describedby="basic-addon2" ui-number-mask="1">
+        <span class="input-group-addon" id="basic-addon2">KG</span>
+      </div>        
     </div>
   </div>
 
@@ -90,7 +93,7 @@
       <textarea style="max-height: 50px;" class="form-control" ng-model="animal.notes"></textarea>        
     </div>
   </div>      
-
+  
   <div class="row">
     <div class="col-md-12" align="right"><br>     
       <button type="submit" class="btn btn-primary">

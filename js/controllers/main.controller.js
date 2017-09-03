@@ -240,10 +240,10 @@ angular.module('animalStoreApp')
         return false;
       });             
     }, 60000);
-    
-    
+  }
 
-    
+  $scope.modalClose = function () {        
+    $('#owner-animals-modal').modal('hide');
   }
 
   });

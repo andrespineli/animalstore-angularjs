@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name animalAngularJsApp.alert
- * @description
- * # alert
- * Factory in the animalAngularJsApp.
- */
 angular.module('animalStoreApp')
   .factory('Alert', function() {   
     return {

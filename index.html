@@ -10,7 +10,8 @@
       <!-- css vendor -->
       <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />      
       <link rel="stylesheet" href="node_modules/jquery-confirm/css/jquery-confirm.css" />
-      <link rel="stylesheet" href="node_modules/jquery-ui-dist/jquery-ui.min.css" />           
+      <link rel="stylesheet" href="node_modules/jquery-ui-dist/jquery-ui.min.css" />   
+      <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />       
       
       <!-- css views -->
       <link rel="stylesheet" href="app/animal/animal.style.css"> 
@@ -61,7 +62,8 @@
   <!-- body/alert-div/ng-view --> 
   <body id="unLoadbackground" class="container">          
     <div class="container" id="alert"></div>
-    <div ng-view></div>          
+    <div ng-view ng-controller="MainCtrl"></div>  
+    <br><br>
   </body>   
   
   <!-- footer -->
@@ -86,6 +88,7 @@
   <script src="node_modules/jquery-confirm/dist/jquery-confirm.min.js" ></script>
   <script src="node_modules/jquery-ui-dist/jquery-ui.min.js" ></script>  
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>  
+  <script src="node_modules/bootbox/bootbox.min.js"></script>
   
   <!-- app module -->
   <script src="js/app.js"></script>
@@ -95,8 +98,7 @@
 
     <!-- filters -->
   <script src="js/filters/date.filter.js"></script>
-  <script src="js/filters/phone.filter.js"></script>
-
+  <script src="js/filters/phone.filter.js"></script>  
 
   <!-- services -->
   <script src="js/services/auth.js"></script>

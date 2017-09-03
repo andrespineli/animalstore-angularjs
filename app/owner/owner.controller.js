@@ -1,6 +1,6 @@
 angular.module('animalStoreApp')
   .controller('OwnerCtrl', function (Alert, Auth, Api, $scope, $http, $location, $routeParams) {
-
+        
     $scope.getOwners = function () {         
       $http.get(Api.setUriAndReturnAddress('owners'))
       .then(function onSuccess(response) {    
@@ -20,7 +20,8 @@ angular.module('animalStoreApp')
       .then(function onSuccess(response) {    
         if (response.data.data == '') {
           Alert.send('Nenhum cliente cadastrado', 'info', 3);
-          console.log(response)       
+          console.log(response)      
+          alert("getOwnersWithAnimals") 
         }
         $scope.ownersWithAnimals = response.data;        
       })
@@ -103,5 +104,6 @@ angular.module('animalStoreApp')
         }
       });            
     }
+    
 
   });

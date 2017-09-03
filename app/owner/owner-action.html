@@ -5,10 +5,10 @@
 <br>
 <br>
 <div ng-init="getOwnersWithAnimals()" ></div>
-<table class="table table-striped table-hover">          
+<table class="table">          
   <th class="col-md-3">Nome</th>  
-  <th class="col-md-3">Fone / Celular</th>    
-  <th class="col-md-6">Animais</th>                    
+  <th class="col-md-5">Fone / Celular</th>    
+  <th class="col-md-4">Animais</th>                    
   <th colspan="4" class="col-md-1">Informações</th>           
   <tbody>        
     <tr dir-paginate-start="o in ownersWithAnimals | filter: searchKeyword |itemsPerPage:10 track by $index"> 
@@ -25,13 +25,13 @@
                ng-click="getAnimalsOfOwner(o.animals)" 
                data-toggle="modal" 
                data-target="#owner-animals-modal" 
-               href="">
-              <img id="pet-icon" src="app/_images/icons/pata.png" alt="">
+               href="">              
+              <i id="i" class="fa fa-paw fa-2x" aria-hidden="true"></i> 
             </a>   
           </td>
           <td>                 
-            <a title="Cadastrar Animais" href="#/owner/{{o.id}}/animals">               
-              <img id="plus-icon" src="app/_images/icons/plus.png" alt="">
+            <a title="Cadastrar Animais" href="#/owner/{{o.id}}/animals">                 
+              <i id="i" class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>                  
             </a>  
           </td>             
         </td>                       
