@@ -1,40 +1,57 @@
 
  
-  <div ng-controller="MainCtrl" ng-init="unLoadBackground()"> 
+<div ng-controller="MainCtrl" ng-init="unLoadBackground()"> 
 
-  <div ng-init="getClinic()"></div>
-	<div ng-init="getClinicStatistics()"></div>
-  <center><h2>Estatísticas</h2></center>
-  <br><br>
-  <div class="uk-child-width-1-4@s uk-grid-match" uk-grid>
-    <div>
-      <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light">
-         <h3 class="uk-card-title">Animais</h3>
-          <h1>{{statistics.animals}}</h1>
-      </div>
-    </div>
+<div ng-init="getClinic()"></div>
+<div ng-init="getClinicStatistics()"></div>
 
-     <div>
-      <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light">
-        <h3 class="uk-card-title">Clientes</h3>
-        <h1>{{statistics.owners}}</h1>
-      </div>
-    </div>
+<div class="row">
 
-     <div>
-      <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light">
-        <h3 class="uk-card-title">Veterináraios</h3>
-        <h1>{{statistics.vets}}</h1>
-      </div>
-    </div>
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img id="thumbnail" src="app/_images/icons/vets.png">
+      <p id="thumbnail-description">{{statistics.vets}} Veterináraios</p>
+    </a>          
+  </div>
 
-     <div>
-      <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light">
-        <h3 class="uk-card-title">Raças</h3>
-        <h1>{{statistics.breeds}}</h1>
-      </div>
-    </div>
-</div>
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+     <img id="thumbnail" src="app/_images/icons/owners.png">        
+      <p id="thumbnail-description">{{statistics.owners}} Clientes</p>
+    </a>          
+  </div>    
+
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img id="thumbnail" src="app/_images/icons/types.png">        
+      <p id="thumbnail-description">{{statistics.vets}} Tipos de Animais</p>
+    </a>          
+  </div>  
+
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img id="thumbnail" src="app/_images/icons/breeds.png">        
+      <p id="thumbnail-description">{{statistics.breeds}} Raças</p>
+    </a>          
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img id="thumbnail" src="app/_images/icons/animals.png">        
+      <p id="thumbnail-description">{{statistics.animals}} Animais</p>
+    </a>          
+  </div>    
+    
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img id="thumbnail" src="app/_images/icons/appointments.png">
+      <p id="thumbnail-description">{{statistics.vets}} Consultas</p>        
+    </a>          
+  </div>       
+
+</div>  
+
+
 
   
 

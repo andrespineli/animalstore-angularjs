@@ -1,0 +1,9 @@
+#thumbnail {
+    height: 180px; 
+    width: 222px; 
+    display: block;
+}
+
+#thumbnail-description {
+    text-align: center;
+}
