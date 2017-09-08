@@ -1,0 +1,67 @@
+<h2>Animais</h2>      
+<div class="col-md-12">       
+  <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+</div>               
+<br>
+<br>
+<div ng-init="getAnimalsOfOwner()"></div>
+  <table class="table" >
+    <thead id="animals-list-thead">
+      <tr>
+        <th class="col-md-3">Nome</th>
+        <th class="col-md-2">Tipo</th>
+        <th class="col-md-2">Raça</th>
+        <th class="col-md-3">Veterinário</th>
+        <th class="col-md-2" id="table-options">Opções</th>
+      </tr>
+    </thead>        
+    <tbody id="animals-list-tbody" dir-paginate="a in animalsOfOwner | filter: searchKeyword |itemsPerPage:5 track by $index" id="animals-table">
+      <tr>
+        <td class="col-md-3">{{a.name}}</td>
+        <td class="col-md-2">{{a.type}}</td>
+        <td class="col-md-2">{{a.breed}}</td>
+        <td class="col-md-3">{{a.vet}}</td>
+        <td class="col-md-2" id="table-options" rowspan="2">
+          <a id="option-icon" 
+             title="Consultas"                    
+             class="glyphicon glyphicon-check btn btn-info" 
+             ng-controller="MainCtrl"
+             ng-click="modalClose()"    
+             href="#/cadastrarconsulta/{{a.id}}">
+          </a>
+             
+          <a id="option-icon" 
+             title="Gerar Ficha de Atendimento"                     
+             class="glyphicon glyphicon-list-alt btn btn-success" 
+             ng-controller="MainCtrl"
+             ng-click="modalClose()"    
+             href="#/cadastrarconsulta/{{a.id}}">
+          </a>
+
+          <a id="option-icon" 
+             title="Editar Animal"               
+             class="glyphicon glyphicon-pencil btn btn-warning"
+             ng-controller="MainCtrl"
+             ng-click="modalClose()"                 
+             href="#/owner/{{a.owner_id}}/animals/{{a.id}}">
+          </a>
+
+          <a id="option-icon" 
+             title="Excluir animal" 
+             ng-click="animalRemove(a.id, a.name)" 
+             ng-controller="AnimalCtrl"
+             class="glyphicon glyphicon-remove btn btn-danger" 
+             href="">
+          </a>                
+        </td>
+      </tr>
+      <tr><td class="col-md-10" colspan="4"><b>Obs.:</b> {{a.notes}}</td></tr>
+      <tr><td class="col-md-12" colspan="5" id="animal-list-bottom"></td></tr>  
+    </tbody>
+  </table>
+  <dir-pagination-controls
+    template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+    max-size="5"
+    direction-links="true"
+    boundary-links="true" >
+  </dir-pagination-controls> 

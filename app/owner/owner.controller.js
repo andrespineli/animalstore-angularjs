@@ -20,10 +20,10 @@ angular.module('animalStoreApp')
       .then(function onSuccess(response) {    
         if (response.data.data == '') {
           Alert.send('Nenhum cliente cadastrado', 'info', 3);
-          console.log(response)      
-          alert("getOwnersWithAnimals") 
+          console.log(response)                
         }
-        $scope.ownersWithAnimals = response.data;        
+        $scope.ownersWithAnimals = response.data;       
+        console.log(response.data); 
       })
       .catch(function onError(response) { 
         console.log(response);               
@@ -78,7 +78,7 @@ angular.module('animalStoreApp')
     $scope.ownerRemove = function (owner_id, owner_name) {    
       $.confirm({      
       theme: 'dark',   
-      title: 'Deseja realmente excluir o cliente: '+owner_name+'?',      
+      title: 'Deseja realmente excluir o cliente '+owner_name+'?',      
       content: '',
       buttons: {                
         'sim': {
@@ -87,7 +87,7 @@ angular.module('animalStoreApp')
               $http.delete(Api.setUriAndReturnAddress('owners/' + owner_id))
               .then(function onSuccess(response) {    
                 $scope.getOwners();                              
-                Alert.send('O cliente: '+owner_name+' foi excluido', 'danger', 3);          
+                Alert.send('O cliente '+owner_name+' foi excluido', 'danger', 3);          
               })
               .catch(function onError(response) {
                 console.log(response);

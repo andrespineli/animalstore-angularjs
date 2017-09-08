@@ -1,4 +1,4 @@
-<h2>Consulta Clientes/Animais</h2>      
+<h2>Clientes</h2>      
 <div class="col-md-12">       
   <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
 </div>               
@@ -6,12 +6,14 @@
 <br>
 <div ng-init="getOwnersWithAnimals()" ></div>
 <table class="table">          
-  <th class="col-md-3">Nome</th>  
-  <th class="col-md-5">Fone / Celular</th>    
-  <th class="col-md-4">Animais</th>                    
-  <th colspan="4" class="col-md-1">Informações</th>           
+  <thead>
+    <th class="col-md-3">Nome</th>  
+    <th class="col-md-3">Fones</th>    
+    <th class="col-md-4">Animais</th>                    
+    <th colspan="4" class="col-md-2" id="table-options">Informações</th>           
+  </thead>
   <tbody>        
-    <tr dir-paginate-start="o in ownersWithAnimals | filter: searchKeyword |itemsPerPage:10 track by $index"> 
+    <tr dir-paginate-start="o in ownersWithAnimals | filter: searchKeyword |itemsPerPage:6 track by $index"> 
       <td>{{o.name}}</td>  
       <td>
         <a href="tel:{{o.phone_number}}">{{o.phone_number | phone}}</a> 
@@ -20,22 +22,26 @@
       </td> 
       <td><small style="font-size: 14px;" ng-repeat="a in o.animals"> {{a.name}}{{$last ? '' : ', '}}</small></td>               
         <td>              
-          <td>                 
-            <a title="Exibir Animais"                
-               data-toggle="modal" 
-               data-target="#owner-animals-modal" 
-               href="#/owner/{{o.id}}/animals">              
-              <i id="i" class="fa fa-paw fa-2x" aria-hidden="true"></i> 
-            </a>   
-          </td>
-          <td>                 
-            <a title="Cadastrar Animais" href="#/owner/{{o.id}}/animal">                 
-              <i id="i" class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>                  
-            </a>  
+          <td id="table-options">                 
+            <a id="option-icon" 
+               title="Exibir Animais"      
+               class="btn btn-info" 
+               ng-controller="MainCtrl"                 
+               href="#/owner/{{o.id}}/animals">
+              <i id="i" class="fa fa-paw fa-lg" aria-hidden="true"></i>     
+            </a>    
+                 
+            <a id="option-icon" 
+               title="Cadastrar Animais"      
+               class="btn btn-success" 
+               ng-controller="MainCtrl"                 
+               href="#/owner/{{o.id}}/animal">
+              <i id="i" class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>      
+            </a>
           </td>             
         </td>                       
       <td></td>       
-      <tr dir-paginate-end=""></tr>           
+    <tr dir-paginate-end=""><td class="col-md-12" colspan="5" id="animal-list-bottom"></td></tr>               
   </tbody>    
 </table>  
   <dir-pagination-controls

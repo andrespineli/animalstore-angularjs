@@ -62,7 +62,7 @@ angular.module('animalStoreApp')
     $scope.typeRemove = function (type_id, type_name) {    
       $.confirm({      
       theme: 'dark',   
-      title: 'Deseja realmente excluir o tipo de animal: '+type_name+'?',      
+      title: 'Deseja realmente excluir o tipo de animal '+type_name+'?',      
       content: '',
       buttons: {                
         'sim': {
@@ -71,7 +71,7 @@ angular.module('animalStoreApp')
               $http.delete(Api.setUriAndReturnAddress('animals/types/' + type_id))
               .then(function onSuccess(response) {    
                 $scope.getTypes();                              
-                Alert.send('O tipo de animal: '+type_name+' foi excluido', 'danger', 3);          
+                Alert.send('O tipo de animal '+type_name+' foi excluido', 'danger', 3);          
               })
               .catch(function onError(response) {
                 console.log(response);

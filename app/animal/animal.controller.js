@@ -3,13 +3,14 @@ angular.module('animalStoreApp')
 
   $scope.getAnimalsOfOwner = function () {         
     if($routeParams.owner_id){
-      $http.get(Api.setUriAndReturnAddress('owners/'+$routeParams.owner_id+'/animals'))
+      $http.get(Api.setUriAndReturnAddress('owners/' + $routeParams.owner_id + '/animals'))
       .then(function onSuccess(response) {    
         if (response.data == '') {
           Alert.send('Nenhum animal cadastrado', 'info', 3);
           console.log(response)                
         }
         $scope.animalsOfOwner = response.data;        
+        console.log(response);
       })
       .catch(function onError(response) { 
         console.log(response);               
@@ -65,16 +66,16 @@ angular.module('animalStoreApp')
   $scope.animalRemove = function (animal_id, animal_name) {    
     $.confirm({      
     theme: 'dark',   
-    title: 'Deseja realmente excluir o animal: '+animal_name+'?',      
+    title: 'Deseja realmente excluir o animal '+animal_name+'?',      
     content: '',
     buttons: {                
       'sim': {
-        btnClass: 'btn-warning',
+        btnClass: 'btn-danger',
           action: function(){                                      
             $http.delete(Api.setUriAndReturnAddress('animals/' + animal_id))
             .then(function onSuccess(response) {                     
               $scope.getAnimalsOfOwner();            
-              Alert.send('O Animal: '+animal_name+' foi excluido', 'danger', 3);       
+              Alert.send('O Animal '+animal_name+' foi excluido', 'danger', 3);       
               
             })
             .catch(function onError(response) {

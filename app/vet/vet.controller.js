@@ -58,7 +58,7 @@ angular.module('animalStoreApp')
     $scope.vetRemove = function (vet_id, vet_name) {    
       $.confirm({      
       theme: 'dark',   
-      title: 'Deseja realmente excluir o veterinário: '+vet_name+'?',      
+      title: 'Deseja realmente excluir o veterinário '+vet_name+'?',      
       content: '',
       buttons: {                
         'sim': {
@@ -67,7 +67,7 @@ angular.module('animalStoreApp')
               $http.delete(Api.setUriAndReturnAddress('vets/' + vet_id))
               .then(function onSuccess(response) {    
                 $scope.getVets();                              
-                Alert.send('O veterinário: '+vet_name+' foi excluido', 'danger', 3);          
+                Alert.send('O veterinário '+vet_name+' foi excluido', 'danger', 3);          
               })
               .catch(function onError(response) {
                 console.log(response);

@@ -92,7 +92,7 @@ angular.module('animalStoreApp')
     $scope.breedRemove = function (breed_id, breed_name) {    
       $.confirm({      
       theme: 'dark',   
-      title: 'Deseja realmente excluir a raça: '+breed_name+'?',      
+      title: 'Deseja realmente excluir a raça '+breed_name+'?',      
       content: '',
       buttons: {                
         'sim': {
@@ -101,7 +101,7 @@ angular.module('animalStoreApp')
               $http.delete(Api.setUriAndReturnAddress('animals/breeds/' + breed_id))
               .then(function onSuccess(response) {    
                 $scope.getbreeds();                              
-                Alert.send('A raça: '+breed_name+' foi excluido', 'danger', 3);          
+                Alert.send('A raça '+breed_name+' foi excluido', 'danger', 3);          
               })
               .catch(function onError(response) {
                 console.log(response);

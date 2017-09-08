@@ -76,7 +76,7 @@ angular.module(
         controllerAs: 'animal.controller'
       })
       .when('/owner/:owner_id/animals', {
-        templateUrl: 'app/owner/owner-animals.html',
+        templateUrl: 'app/animal/animals-of-owner.html',
         controller: 'AnimalCtrl',
         controllerAs: 'animal.controller'
       })
