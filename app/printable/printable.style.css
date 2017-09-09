@@ -1,0 +1,56 @@
+#sheet-service-table-1>.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+    border: 1px solid #000;
+    border-collapse: inherit;
+    
+}
+
+#border-black {
+    border-color: #000;
+}
+
+#logo {
+    font-size: 22px;
+    float: left;
+}
+
+#date {
+    font-size: 22px;
+    float: right;
+}
+
+#title {
+    text-align: center;
+    border-top: 1.5px solid #000;
+    border-collapse: inherit;
+}
+
+#appointment-column { 
+    width: 78%;
+}
+
+#appointment-xl-row { 
+    height: 600px;
+}
+
+#appointment-lg-row { 
+    height: 300px;
+}
+
+@media print {
+    body {
+        margin: 5px;
+        padding: 0;
+        background-color: #FAFAFA;               
+    }
+
+    .page-printable {        
+        width: 100%;          
+        padding: 2% 3% 2% 3%;              
+    }
+    
+    @page {
+        size: A4;
+        margin: 0;
+    }  
+
+}

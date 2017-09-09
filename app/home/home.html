@@ -1,12 +1,9 @@
 
- 
+<div ng-init="getClinicAndStatistics()"></div> 
 <div ng-controller="MainCtrl" ng-init="unLoadBackground()"> 
-
-
-
 <div class="row">
 
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-6 col-md-2">
     <a href="#/vets" class="thumbnail">
       <img id="thumbnail" src="app/_images/icons/vets.png">
       <hr>
@@ -14,7 +11,7 @@
     </a>          
   </div>
 
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-6 col-md-2">
     <a href="#/owners" class="thumbnail">
       <img id="thumbnail" src="app/_images/icons/owners.png">     
       <hr>   
@@ -22,15 +19,15 @@
     </a>          
   </div>    
 
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-6 col-md-2">
     <a href="#/types" class="thumbnail">
       <img id="thumbnail" src="app/_images/icons/types.png">        
       <hr>
-      <p id="thumbnail-description">{{statistics.vets}} Tipos de Animais</p>
+      <p id="thumbnail-description">{{statistics.vets}} Espécies</p>
     </a>          
   </div>  
 
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-6 col-md-2">
     <a href="#/breeds" class="thumbnail">
       <img id="thumbnail" src="app/_images/icons/breeds.png">        
       <hr>
@@ -38,7 +35,7 @@
     </a>          
   </div>
 
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-6 col-md-2">
     <a href="#/owner/actions" class="thumbnail">
       <img id="thumbnail" src="app/_images/icons/animals.png">      
       <hr>  
@@ -46,7 +43,7 @@
     </a>          
   </div>    
     
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-6 col-md-2">
     <a href="#/owner/actions" class="thumbnail">
       <img id="thumbnail" src="app/_images/icons/appointments.png">
       <hr>

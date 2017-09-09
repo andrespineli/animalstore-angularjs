@@ -1,0 +1,15 @@
+#appointment-text-area {
+    max-width: 100%; 
+    min-width: 100%; 
+    min-height: 200px; 
+    max-height: 70px;
+}
+
+#animal-appointment {
+    font-size: 16px;
+}
+
+#appointment-table {
+    text-align: justify;
+    vertical-align: middle;
+}

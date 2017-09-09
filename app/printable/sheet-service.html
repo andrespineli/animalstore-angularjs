@@ -1,0 +1,147 @@
+<div ng-init="getServiceSheet()"></div>
+<div class="page-printable" id="sheet-service-table-1" ng-repeat="s in serviceSheet">
+  <div class="row">
+    <div id="logo" align="left" class="col-md-6">AnimalStore</div>
+    <div id="date" align="right" class="col-md-6">___/___/___</div>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <th id="title" colspan="2">FICHA DE ATENDIMENTO</th>
+    </tr>
+    <tr>
+      <td>Proprietario:</td>
+      <td>{{s.owner}}</td>
+    </tr>
+    <tr>
+      <td>Data Nascimento:</td>
+      <td>{{s.owner_birth | formatDate}}</td>
+    </tr>
+    <tr>
+      <td>CPF:</td>
+      <td>{{s.document_number_cpf | cpf}}</td>
+    </tr>
+    <tr>
+      <td>RG:</td>
+      <td>{{s.document_number_rg}}</td>
+    </tr>
+    <tr>
+      <td>Endereço:</td>
+      <td>{{s.address}}</td>
+    </tr>
+    <tr>
+      <td>Cidade:</td>
+      <td>{{s.city}}</td>
+    </tr>
+    <tr>
+      <td>Estado:</td>
+      <td>{{s.state}}</td>
+    </tr>
+  </table>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <th id="title" colspan="2">DADOS DO PACIENTE</th>
+    </tr>
+    <tr>
+      <td>Nome:</td>
+      <td>{{s.animal}}</td>
+    </tr>
+    <tr>
+      <td>Espécie:</td>
+      <td>{{s.type}}</td>
+    </tr>
+    <tr>
+      <td>Raça:</td>
+      <td>{{s.breed}}</td>
+    </tr>
+    <tr>
+      <td>Coloração:</td>
+      <td>{{s.color}}</td>
+    </tr>
+    <tr>
+      <td>Alimentação:</td>
+      <td>{{s.food_types}}</td>
+    </tr>
+    <tr>
+      <td>Nascimento:</td>
+      <td>{{s.animal_birth}}</td>
+    </tr>
+    <tr>
+      <td>Sexo:</td>
+      <td ng-if="s.gender == 1">Macho</td>
+      <td ng-if="s.gender == 0">Fêmea</td>
+    </tr>
+    <tr>
+      <td>Peso:</td>
+      <td>{{s.weight | number:1}} KG</td>
+    </tr>
+  </table>
+  <br>
+  <table class="table table-bordered">
+      <tr>
+        <th id="title" colspan="2">CONSULTA</th>
+      </tr>
+      <tr>
+        <td>Temperatura:</td>
+        <td id="appointment-column"></td>
+      </tr>
+      <tr>
+        <td>TPC:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FC:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FR:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Estado Físico:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Mucosa:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Hidratação:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Comportamento:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Data Vermífugo:</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>Data da Última Vácina de Raiva:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Data da Última Vácina Polivalente:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="table-middle">Anamnese:</td>
+        <td id="appointment-xl-row" ></td>
+      </tr>
+      <tr>
+        <td id="table-middle">Exames Solicitados:</td>
+        <td id="appointment-lg-row"></td>
+      </tr>
+      <tr>
+        <td id="table-middle">Diagnóstico:</td>
+        <td id="appointment-lg-row"></td>
+      </tr>
+      <tr>
+        <td id="table-middle">Procedimento de Tratamento:</td>
+        <td id="appointment-lg-row"></td>
+      </tr>
+    </table>
+</div>

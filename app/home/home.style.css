@@ -1,11 +1,11 @@
 #thumbnail {
-    height: 165px; 
-    width: 200px; 
-    display: block;
+    height: 160px;; 
+    width: 190px; 
+    display: block;    
 }
 
 #thumbnail-description {
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
 }

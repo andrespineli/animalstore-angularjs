@@ -1,0 +1,133 @@
+<div ng-init="findAppointmentById()"></div>
+<form ng-submit="appointmentRegister()">
+	
+  <div class="row">
+		<div class="col-md-12">			
+			<h2>Consultas</h2>
+			<p>Cadastrar/Alterar</p>
+		</div> 
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">							
+			<label>Data da Consulta</label>
+			<input type="text" ng-model="appointment.appointment_date" class="form-control"  ui-date-mask="DD/MM/YYYY">							      								     	 
+		</div>	
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label>Temperatura</label><br>
+			<input maxlength="10" type="text" ng-model="appointment.temperature" class="form-control" ui-number-mask="1">
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label>FC</label><br>
+			<input maxlength="255" type="text" ng-model="appointment.fc" class="form-control" >
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>TPC</label><br>
+			<input maxlength="255" type="text" ng-model="appointment.tpc" class="form-control" >
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>FR</label><br>
+			<input maxlength="255" type="text" ng-model="appointment.fr" class="form-control" >
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Mucosa</label><br>
+			<input maxlength="255" type="text" ng-model="appointment.mucosa" class="form-control" >
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Estado Fisico</label><br>
+			<input maxlength="255" type="text" ng-model="appointment.physical_condition" class="form-control">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Hidratação</label><br>
+			<input maxlength="255" type="text" ng-model="appointment.hydration" class="form-control">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Data Vermifugo</label><br>
+			<input  type="text" ng-model="appointment.vermifuge_date" class="form-control" ui-date-mask="DD/MM/YYYY">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Data Ultima Vacina Raiva</label><br>
+			<input type="text" ng-model="appointment.rabies_vaccine_date" class="form-control" ui-date-mask="DD/MM/YYYY">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Data Ultima Vacina Polivalente</label><br>
+			<input type="text" ng-model="appointment.multipurpose_vaccine_date" class="form-control" ui-date-mask="DD/MM/YYYY">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Comportamento</label><br>
+			<textarea ng-keyup="textareaComportamento(500)" id="appointment-text-area" class="form-control" ng-model="appointment.behavior"></textarea>        
+		</div>				          
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label>Anamnese</label><br>
+			<textarea ng-keyup="textareaAnamnese(2000)" id="appointment-text-area" class="form-control" ng-model="appointment.anamnesis"></textarea>   				 
+		</div>         				         
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label>Exames Solicitados</label><br>
+			<textarea ng-keyup="textareaExames(500)" id="appointment-text-area" class="form-control" ng-model="appointment.requested_exams"></textarea>   				   
+		</div>      
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label>Diagnostico</label><br>
+			<textarea ng-keyup="textareaDiagnostico(2000)" id="appointment-text-area" class="form-control" ng-model="appointment.diagnosis"></textarea>     				 
+		</div>       
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label>Proçedimento e Tratamento</label><br>
+			<textarea ng-keyup="textareaProcedimento(2000)" id="appointment-text-area" class="form-control" ng-model="appointment.treatment"></textarea>  			    
+		</div>         			        
+	</div>
+	<br>
+	<div class="row">
+    <div class="col-md-12" align="right">             
+      <button type="submit" class="btn btn-primary">
+        <div class="glyphicon glyphicon-floppy-saved"></div> 
+        Salvar
+      </button>       
+    </div>
+  </div>     
+	<br><br><br>
+	
+</form>

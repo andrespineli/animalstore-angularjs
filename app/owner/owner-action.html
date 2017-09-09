@@ -7,20 +7,20 @@
 <div ng-init="getOwnersWithAnimals()" ></div>
 <table class="table">          
   <thead>
-    <th class="col-md-3">Nome</th>  
-    <th class="col-md-3">Fones</th>    
-    <th class="col-md-4">Animais</th>                    
+    <th class="col-md-3" id="table-middle">Nome</th>  
+    <th class="col-md-3" id="table-middle">Fones</th>    
+    <th class="col-md-4" id="table-middle">Animais</th>                    
     <th colspan="4" class="col-md-2" id="table-options">Informações</th>           
   </thead>
   <tbody>        
     <tr dir-paginate-start="o in ownersWithAnimals | filter: searchKeyword |itemsPerPage:6 track by $index"> 
-      <td>{{o.name}}</td>  
-      <td>
+      <td id="table-middle">{{o.name}}</td>  
+      <td id="table-middle">
         <a href="tel:{{o.phone_number}}">{{o.phone_number | phone}}</a> 
         <small ng-if="o.phone_number && o.cell_number">/</small> 
         <a href="tel:{{o.cell_number}}">{{o.cell_number | phone}}</a>
       </td> 
-      <td><small style="font-size: 14px;" ng-repeat="a in o.animals"> {{a.name}}{{$last ? '' : ', '}}</small></td>               
+      <td id="table-middle"><small style="font-size: 14px;" ng-repeat="a in o.animals"> {{a.name}}{{$last ? '' : ', '}}</small></td>               
         <td>              
           <td id="table-options">                 
             <a id="option-icon" 

@@ -23,6 +23,7 @@
     "jquery-confirm": "^3.3.2",
     "jquery-ui-dist": "^1.12.1",
     "moment": "^2.18.1",
+    "ng-filters-br": "^1.1.1",
     "ngstorage": "^0.3.11"
   }
 }

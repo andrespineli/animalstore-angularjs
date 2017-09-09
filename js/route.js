@@ -4,7 +4,9 @@ angular.module(
     'ngResource', 
     'ngStorage',
     'angularUtils.directives.dirPagination',
-    'ui.utils.masks'
+    'ui.utils.masks',
+    
+    'brasil.filters'
   ])
   .config(function($routeProvider, $httpProvider, $locationProvider) {  
     $locationProvider.hashPrefix('');
@@ -14,6 +16,31 @@ angular.module(
         templateUrl: 'app/home/home.html',
         controller: 'HomeCtrl',
         controllerAs: 'home.controller'
+      })
+      .when('/printable/service/:animal_id', {
+        templateUrl: 'app/printable/sheet-service.html',
+        controller: 'PrintableCtrl',
+        controllerAs: 'printable.controller'
+      })
+      .when('/printable/appointment/:animal_id/:appointment_id', {
+        templateUrl: 'app/printable/sheet-appointment.html',
+        controller: 'PrintableCtrl',
+        controllerAs: 'printable.controller'
+      })
+      .when('/appointments/:animal_id/:animal_name', {
+        templateUrl: 'app/appointment/appointment-list.html',
+        controller: 'AppointmentCtrl',
+        controllerAs: 'appointment.controller'
+      })
+      .when('/appointment/:animal_id/:animal_name', {
+        templateUrl: 'app/appointment/appointment.html',
+        controller: 'AppointmentCtrl',
+        controllerAs: 'appointment.controller'
+      })
+      .when('/appointment/:animal_id/:animal_name/:appointment_id', {
+        templateUrl: 'app/appointment/appointment.html',
+        controller: 'AppointmentCtrl',
+        controllerAs: 'appointment.controller'
       })
       .when('/myclinic', {
         templateUrl: 'app/clinic/clinic-edit.html',
