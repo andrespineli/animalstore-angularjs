@@ -13,7 +13,7 @@ angular.module('animalStoreApp')
         setTimeout(function() {
             window.print();
             history.back();
-        }, 300);
+        }, 500);
       })
       .catch(function onError(response) { 
         console.log(response);               
