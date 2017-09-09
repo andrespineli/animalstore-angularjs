@@ -65,14 +65,20 @@
   <!-- body/alert-div/ng-view --> 
   <body id="unLoadbackground" class="container">          
     <div class="container" id="alert"></div>
-    <div ng-view ng-controller="MainCtrl"></div>  
-    <br><br>
+    <div id="mainView" ng-view ng-controller="MainCtrl"></div>      
   </body>   
   
   <!-- footer -->
   <div class="container">
     <nav style="color: #FFF;" class="navbar navbar-inverse navbar-fixed-bottom">
-      <center>AnimalStore | Alpha V1</center>        
+      <center>
+        AnimalStore | Alpha V1
+        <br>
+        <span align="center" class="small">
+          Imagens 
+          <a href='http://br.freepik.com'>Designed by Freepik</a>   
+        </span>      
+      </center>     
     </nav>
   </div>
 

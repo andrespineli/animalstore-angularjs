@@ -1,72 +1,73 @@
 <div ng-init="getAnimalAppointments()"></div> 
 
-  <div class="row">
-		<div class="col-md-12">
-			<h1>Consultas</h1>
-		</div>
+<div class="row">
+	<div class="col-md-12">
+		<h1>Consultas</h1>
 	</div>
-	<div class="row">
-		<div class="col-md-6" align="left">   		
-			<br> 
-			<p id="animal-appointment"><b>Paciente:</b> {{animal_name}}</p>
-		</div>
-    <div class="col-md-6" align="right">             
-			<button class="btn btn-info" ng-click="appointmentPage(animal_name)">
-				<div class="glyphicon glyphicon-plus-sign"> </div>
-				Nova Consulta
-			</button>
-    </div>
-	</div>       
-	<br>
+</div>
+
+<div class="row">
+	<div class="col-md-6" align="left">   		
+		<br> 
+		<p id="animal-appointment"><b>Paciente:</b> {{animal_name}}</p>
+	</div>
+  <div class="col-md-6" align="right">             
+		<button class="btn btn-info" ng-click="appointmentPage(animal_name)">
+			<div class="glyphicon glyphicon-plus-sign"> </div>
+			Nova Consulta
+		</button>
+   </div>
+</div>       
+
+<div class="row">
 	<div class="col-md-12">       
 		<input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
 	</div>    
-	<table class="table" ng-if="animalAppointments != ''">  
-		<thead>
-			<tr>            
-				<th class="col-md-2">Data</th>    
-				<th class="col-md-8">Diagnóstico</th>      
-				<th class="col-md-2" id="table-options">Opções</th>
-			</tr>
-		</thead>
-		<tbody dir-paginate="a in animalAppointments | filter: searchKeyword | itemsPerPage:5" >
-			<tr>  	                
+</div>
+	
+<table class="table" ng-if="animalAppointments != ''">  
+	<thead>		     
+		<th class="col-md-2 small">DATA</th>    
+		<th class="col-md-8 small">DIAGNÓSTICO</th>      
+		<th class="col-md-2 small" id="table-options">OPÇÕES</th>		
+	</thead>
+	<tbody dir-paginate="a in animalAppointments | filter: searchKeyword | itemsPerPage:5">
+		<tr>  	                
 			<td id="appointment-table">{{a.appointment_date | formatDate | date:"dd/MM/YYYY HH:mm"}}</td> 	            
 			<td id="appointment-table">{{a.diagnosis}}</td>
 			<td id="table-options"> 
 				<a id="option-icon" 
-					title="Gerar Ficha da Consulta"               
-					class="glyphicon glyphicon-print btn btn-success"
-					ng-controller="MainCtrl"                           
-					href="#/printable/appointment/{{a.animal_id}}/{{a.id}}">
-		    </a>
-		  	<a id="option-icon" 
-				   title="Editar Consulta"               
-					 class="glyphicon glyphicon-pencil btn btn-warning"
+	   		   title="Gerar Ficha da Consulta"               
+					 class="glyphicon glyphicon-print btn btn-success"
 					 ng-controller="MainCtrl"                           
-					 href="#/appointment/{{a.animal_id}}/{{animal_name}}/{{a.id}}">
+					 href="#/printable/appointment/{{a.animal_id}}/{{a.id}}">
 				</a>
 
 				<a id="option-icon" 
-					 title="Remover Consulta"               
+					 title="Editar Consulta"               
+					 class="glyphicon glyphicon-pencil btn btn-warning"
+					 ng-controller="MainCtrl"                           
+				   href="#/appointment/{{a.animal_id}}/{{animal_name}}/{{a.id}}">
+				</a>
+
+				<a id="option-icon" 
+				   title="Remover Consulta"               
 					 class="glyphicon glyphicon-remove btn btn-danger"
 					 ng-controller="MainCtrl"                           
-					 ng-click="appointmentRemove(a.id, a.appointment_date, animal_name)">
-				</a>			              
+	  			 ng-click="appointmentRemove(a.id, a.appointment_date, animal_name)">
+				</a>			                 
+			</td>
+			<tr dir-paginate-end=""><td class="col-md-12" colspan="4" id="animal-list-bottom"></td></tr>    
+		</tr>	
 			
-			          
-				</center>                 
-				</td>
-				<tr><td class="col-md-12" colspan="5" id="animal-list-bottom"></td></tr>  
-			</tr dir-paginate-end="">
-		</tbody>
-	</table>
+	</tbody>
+</table>
 	
-	<dir-pagination-controls
-		template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
-		max-size="5"
-		direction-links="true"
-		boundary-links="true" >
-  </dir-pagination-controls> 	      
+<dir-pagination-controls
+	template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+	max-size="5"
+	direction-links="true"
+	boundary-links="true" >
+</dir-pagination-controls> 	      
 
 

@@ -1,77 +1,136 @@
-<!doctype html>
-<html ng-app="app">
-	<body class="container-fluid">   
-		<div ng-init="desCarregaBack()" class="form-group">  
-		<div  ng-init="findVetById()"></div> 		      
-			<form ng-submit="vetRegister()"> 
-				<div class="row">	
-					<div class="col-md-12">
-					<h2>Veterinarios</h2>   
-						<p>Cadastrar novo veterinário</p>	  
-						<label class="small">Nome</label><br>
-					    <input type="text" ng-model="vet.name" class="form-control">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<label class="small">E-mail</label><br>
-			        <input type="email" ng-model="vet.email"  class="form-control">		 
-					</div>
-				</div>	
-				<br>		  	
-				<div class="row">
-			    <div class="col-md-12" align="right">   					
-						<button type="submit" class="btn btn-primary">
-							<div class="glyphicon glyphicon-floppy-saved"></div> 
-							Salvar
-						</button>				
-			    </div>
-			</form>
-			<br>	
-			<br>
-			<br>
-			<p>Veterinários cadastrados</p>	
-			<div ng-init="getVets()" class="col-md-12">       
-			    <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
-			</div>         	 
-			<br>
-			<br>        	  
-			<table class="table table-striped">
-				<thead>
-				    <tr>                
-					    <th class="col-md-4 small">Nome</th> 
-					    <th class="col-md-6 small">E-mail</th>      
-					    <th class="col-md-1 small"><center>Opções</center></th>
-				    </tr>
-				</thead>
-			    <tbody >
-			        <tr dir-paginate="v in vets | filter: searchKeyword |itemsPerPage:5 track by $index">       
-			            <td>{{v.name}}</td>
-			            <td>{{v.email}}</td>            
-				        <td> 
-				            <center>                         
-				              	<a id="a-decoration" href="#/vets/{{v.id}}">
-				              		<button  class="btn btn-warning btn-sm">
-				              			<div class="glyphicon glyphicon-pencil"></div> 				              			
-				              		</button>
-				              	</a>				              	
-				                <button ng-click="vetRemove(v.id, v.name)" class="btn btn-danger btn-sm">
-				                	<div class="glyphicon glyphicon-remove"></div> 				                	
-				                </button>
-				            </center>                 
-				        </td>
-			        </tr>
-			    </tbody>
-			</table>
-		    <dir-pagination-controls
-		    	template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
-		        max-size="5"
-		        direction-links="true"
-		        boundary-links="true" >
-		    </dir-pagination-controls>    
-	</div>                 
-</body> 
-</html>
+<div ng-init="getVets()"></div>
+<div ng-init="findVetById()"></div> 		      
 
+<form ng-submit="vetRegister()"> 
 
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Veterinarios</h2>   
+			<p>Cadastrar novo veterinário</p>	  
+		</div>
+	</div>		
 
+	<div class="row">	
+		<div class="col-md-12">			
+			<label>Nome</label><br>
+		    <input type="text" ng-model="vet.name" maxlength="255" class="form-control" required>
+		</div>
+	</div>
+
+	<div class="row"> 
+     <div class="col-md-12">
+    		<label>CPF</label><br>
+     	<input type="text" ng-model="vet.document_number_cpf" class="form-control" ui-br-cpf-mask>
+     </div>
+	 </div> 
+	 
+	<div class="row">
+		<div class="col-md-12">
+			<label>Nº CRMV</label><br>
+        <input type="text" ng-model="vet.document_number_crmv" maxlength="11"  class="form-control">		 
+		</div>
+	</div>	
+
+	<div class="row">
+    <div class="col-md-12">
+      <label>CRMV UF</label><br>      
+      <select ng-model="vet.state" class="form-control">         
+        <option value="">--Selecione--</option>         
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AP">AP</option>
+        <option value="AM">AM</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MT">MT</option>
+        <option value="MS">MS</option>
+        <option value="MG">MG</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PR">PR</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RS">RS</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="SC">SC</option>
+        <option value="SP">SP</option>
+        <option value="SE">SE</option>
+        <option value="TO">TO</option> 
+      </select>      
+    </div>
+	</div>
+		 
+	<div class="row">
+		<div class="col-md-12">
+			<label>E-mail</label><br>
+        <input type="email" ng-model="vet.email" maxlength="255" class="form-control">		 
+		</div>
+	</div>	
+
+	<br>		
+
+	<div class="row">
+    <div class="col-md-12" align="right">   					
+			<button type="submit" class="btn btn-primary">
+				<div class="glyphicon glyphicon-floppy-saved"></div> 
+				Salvar
+			</button>				
+    </div>
+</form>
+
+<p>Veterinários cadastrados</p>	
+
+<div class="row">
+	<div class="col-md-12">       
+		<input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+	</div>   
+</div>
+      	        	  
+<table class="table table-striped">
+	<thead>
+    <tr>                
+			<th class="col-md-2 small">NOME</th> 
+			<th class="col-md-2 small">CPF</th> 
+			<th class="col-md-2 small">CRMV</th> 
+	    <th class="col-md-2 small">E-MAIL</th>      
+	    <th class="col-md-1 small" id="table-options">OPÇÕES</th>
+    </tr>
+	</thead>
+  <tbody >
+    <tr dir-paginate="v in vets | filter: searchKeyword |itemsPerPage:5 track by $index">       
+			<td>{{v.name}}</td>
+			<td>{{v.document_number_cpf | cpf}}</td>
+			<td>{{v.document_number_crmv}}-{{v.state}}</td>
+      <td>{{v.email}}</td>            
+      <td id="table-options">                 
+				
+				<a id="option-icon" 
+					title="Editar"      
+					class="btn btn-warning btn-sm glyphicon glyphicon-pencil"                        
+					href="#/vets/{{v.id}}">           
+				</a>    
+
+				<a id="option-icon" 
+					title="Excluir"      
+					class="btn btn-danger btn-sm glyphicon glyphicon-remove"                        
+					ng-click="vetRemove(v.id, v.name)">           
+				</a>   				
+                   
+		  </td>
+	  </tr>
+	</tbody>
+</table>
+<dir-pagination-controls
+  	template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+   max-size="5"
+   direction-links="true"
+   boundary-links="true" >
+</dir-pagination-controls>    
+              

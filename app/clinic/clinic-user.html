@@ -1,30 +1,34 @@
-<div class="container">
-  <div ng-init="findClinic()" class="form-group">  
-	
-	  <form ng-submit="updateUserName()">	  
-			<div class="row">
-				<div class="col-md-12">
-				  <h2>Opções de Entrada</h2>  
-	  			<p>Alterar usuário e senha</p>    
-					<label>Usuário</label>
-					<input type="text" class="form-control" ng-model="clinic.user_name">	  					
-				</div>
-			</div>	 
-			<div class="row">
-				<div class="col-md-12">
-					<label>Senha</label>
-					<input type="password" class="form-control" ng-model="clinic.password">		
-				</div>		  
-			</div>			
-			<div class="row">
-	      <div class="col-md-12" align="right"><br>     
-	      	<button type="submit" class="btn btn-primary">
-	          <div class="glyphicon glyphicon-floppy-saved"></div> 
-	          Salvar
-	        </button>		  		
-	      </div>
-	    </div>    
-		</form>	  
-	</div>                 
-</div>      
+<div ng-init="findClinic()"></div>      
+
+<form ng-submit="updateUserName()">	  
+
+	<div class="row">
+		<div class="col-md-12">
+		  <h2>Opções de Entrada</h2>  
+ 			<p>Alterar usuário e senha</p>    
+			<label>Usuário</label>
+			<input type="text" class="form-control" ng-model="clinic.user_name">	  					
+		</div>
+	</div>	 
+
+	<div class="row">
+		<div class="col-md-12">
+			<label>Senha</label>
+			<input type="password" class="form-control" ng-model="clinic.password">		
+		</div>		  
+	</div>		
+
+	<br> 
+
+	<div class="row">
+     <div class="col-md-12" align="right">    
+     	<button type="submit" class="btn btn-primary">
+         <div class="glyphicon glyphicon-floppy-saved"></div> 
+         Salvar
+       </button>		  		
+     </div>
+	 </div>    
+	 
+</form>	  
+               
 

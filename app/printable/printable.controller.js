@@ -1,6 +1,8 @@
 angular.module('animalStoreApp')
 .controller('PrintableCtrl', function (Alert, Auth, Api, $scope, $rootScope, $http, $location, $routeParams) {
 
+  var printableDelaySeconds = 0.5;
+
   $scope.getServiceSheet = function () {         
     if($routeParams.animal_id){
       $http.get(Api.setUriAndReturnAddress('printable/services/' + $routeParams.animal_id))
@@ -13,7 +15,7 @@ angular.module('animalStoreApp')
         setTimeout(function() {
             window.print();
             history.back();
-        }, 500);
+        }, printableDelaySeconds * 1000);
       })
       .catch(function onError(response) { 
         console.log(response);               
@@ -29,17 +31,16 @@ angular.module('animalStoreApp')
           Alert.send('Nenhum animal cadastrado', 'info', 3);
           console.log(response)                
         }
-        $scope.serviceSheet = response.data;        
+        $scope.appointmentSheet = response.data;        
         setTimeout(function() {
             window.print();
             history.back();
-        }, 300);
+        }, printableDelaySeconds * 1000);
       })
       .catch(function onError(response) { 
         console.log(response);               
       });             
     }      
   }  
-
 
 });

@@ -1,16 +1,23 @@
-<h2>Clientes</h2>      
-<div class="col-md-12">       
-  <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
-</div>               
-<br>
-<br>
 <div ng-init="getOwnersWithAnimals()" ></div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Clientes</h2>  
+  </div>
+</div>    
+
+<div class="row">
+  <div class="col-md-12">       
+    <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+  </div>  
+</div>
+             
 <table class="table">          
   <thead>
-    <th class="col-md-3" id="table-middle">Nome</th>  
-    <th class="col-md-3" id="table-middle">Fones</th>    
-    <th class="col-md-4" id="table-middle">Animais</th>                    
-    <th colspan="4" class="col-md-2" id="table-options">Informações</th>           
+    <th class="col-md-3 small" id="table-middle">NOME</th>  
+    <th class="col-md-3 small" id="table-middle">FONES</th>    
+    <th class="col-md-4 small" id="table-middle">ANIMAIS</th>                    
+    <th colspan="4" class="col-md-2 small" id="table-options">OPÇÕES</th>           
   </thead>
   <tbody>        
     <tr dir-paginate-start="o in ownersWithAnimals | filter: searchKeyword |itemsPerPage:6 track by $index"> 
@@ -21,32 +28,33 @@
         <a href="tel:{{o.cell_number}}">{{o.cell_number | phone}}</a>
       </td> 
       <td id="table-middle"><small style="font-size: 14px;" ng-repeat="a in o.animals"> {{a.name}}{{$last ? '' : ', '}}</small></td>               
-        <td>              
-          <td id="table-options">                 
-            <a id="option-icon" 
-               title="Exibir Animais"      
-               class="btn btn-info" 
-               ng-controller="MainCtrl"                 
-               href="#/owner/{{o.id}}/animals">
-              <i id="i" class="fa fa-paw fa-lg" aria-hidden="true"></i>     
-            </a>    
-                 
-            <a id="option-icon" 
-               title="Cadastrar Animais"      
-               class="btn btn-success" 
-               ng-controller="MainCtrl"                 
-               href="#/owner/{{o.id}}/animal">
-              <i id="i" class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>      
-            </a>
-          </td>             
-        </td>                       
-      <td></td>       
+      <td>              
+      <td id="table-options">                 
+        <a id="option-icon" 
+           title="Exibir Animais"      
+           class="btn btn-info" 
+           ng-controller="MainCtrl"                 
+           href="#/owner/{{o.id}}/animals">
+          <i id="i" class="fa fa-paw fa-lg" aria-hidden="true"></i>     
+        </a>    
+                
+        <a id="option-icon" 
+           title="Cadastrar Animais"      
+           class="btn btn-success" 
+           ng-controller="MainCtrl"                 
+           href="#/owner/{{o.id}}/animal">
+          <i id="i" class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>      
+        </a>
+        </td>             
+      </td> 
+    </tr>                      
     <tr dir-paginate-end=""><td class="col-md-12" colspan="5" id="animal-list-bottom"></td></tr>               
   </tbody>    
 </table>  
-  <dir-pagination-controls
-    template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
-       max-size="5"
-       direction-links="true"
-       boundary-links="true" >
-  </dir-pagination-controls>      
+
+<dir-pagination-controls
+  template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+  max-size="5"
+  direction-links="true"
+  boundary-links="true" >
+</dir-pagination-controls>      

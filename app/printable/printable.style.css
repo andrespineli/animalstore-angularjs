@@ -1,7 +1,6 @@
 #sheet-service-table-1>.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
     border: 1px solid #000;
-    border-collapse: inherit;
-    
+    border-collapse: inherit;    
 }
 
 #border-black {
@@ -9,12 +8,12 @@
 }
 
 #logo {
-    font-size: 22px;
+    font-size: 26px;
     float: left;
 }
 
 #date {
-    font-size: 22px;
+    font-size: 26px;
     float: right;
 }
 
@@ -36,6 +35,11 @@
     height: 300px;
 }
 
+#printable-table {
+    text-align: justify;
+    vertical-align: middle;
+}
+
 @media print {
     body {
         margin: 5px;
@@ -45,12 +49,12 @@
 
     .page-printable {        
         width: 100%;          
-        padding: 2% 3% 2% 3%;              
+        padding: 0 3% 0 3%;              
     }
     
     @page {
         size: A4;
-        margin: 0;
+        margin: 4% 0 0 0;  
+               
     }  
-
 }

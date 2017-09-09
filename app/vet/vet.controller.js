@@ -33,7 +33,8 @@ angular.module('animalStoreApp')
         .then(function onSuccess(response) {    
           $scope.vet = null;
           $scope.getVets();         
-          Alert.send('Veterinário cadastrado', 'success', 3);          
+          Alert.send('Veterinário cadastrado', 'success', 3);   
+          console.log(response);              
         })
         .catch(function onError(response) {
           console.log(response);

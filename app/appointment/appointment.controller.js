@@ -102,5 +102,50 @@ angular.module('animalStoreApp')
     });            
   }
 
+	$scope.textareaBehavior = function(maxLength) {
+    $scope.behaviorMaxLength = maxLength;
+		if ($scope.appointment.behavior.length >= maxLength) {    
+      Alert.send('O texto não pode ultrapassar ' + maxLength + ' caracteres', 'warning', 3);       
+			var cut = $scope.appointment.behavior.length = maxLength;
+			$scope.appointment.behavior = $scope.appointment.behavior.substring(0, cut);		
+		}				
+  }
+  
+  $scope.textareaAnamnesis = function(maxLength) {
+    $scope.anamnesisMaxLength = maxLength;
+		if ($scope.appointment.anamnesis.length >= maxLength) {
+			Alert.send('O texto não pode ultrapassar ' + maxLength + ' caracteres', 'warning', 3);
+			var cut = $scope.appointment.anamnesis.length = maxLength;
+			$scope.appointment.anamnesis = $scope.appointment.anamnesis.substring(0, cut);		
+		}				
+  }
+  
+  $scope.textareaExams = function(maxLength) {
+    $scope.examsMaxLength = maxLength;
+		if ($scope.appointment.requested_exams.length >= maxLength) {
+			Alert.send('O texto não pode ultrapassar ' + maxLength + ' caracteres', 'warning', 3);
+			var cut = $scope.appointment.requested_exams.length = maxLength;
+			$scope.appointment.requested_exams = $scope.appointment.requested_exams.substring(0, cut);		
+		}				
+  }
+  
+  $scope.textareaDiagnosis = function(maxLength) {
+    $scope.diagnosisMaxLength = maxLength;
+		if ($scope.appointment.diagnosis.length >= maxLength) {
+			Alert.send('O texto não pode ultrapassar ' + maxLength + ' caracteres', 'warning', 3);
+			var cut = $scope.appointment.diagnosis.length = maxLength;
+			$scope.appointment.diagnosis = $scope.appointment.diagnosis.substring(0, cut);		
+		}				
+  }
+  
+  $scope.textareaTreatment = function(maxLength) {
+    $scope.treatmentMaxLength = maxLength;
+		if ($scope.appointment.treatment.length >= maxLength) {
+			Alert.send('O texto não pode ultrapassar ' + maxLength + ' caracteres', 'warning', 3);
+			var cut = $scope.appointment.treatment.length = maxLength;
+			$scope.appointment.treatment = $scope.appointment.treatment.substring(0, cut);		
+		}				
+	}
+
 
 });

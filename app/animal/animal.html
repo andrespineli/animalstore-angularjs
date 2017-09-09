@@ -1,15 +1,21 @@
+<div ng-init="findAnimalById()"></div>  
+
 <form ng-submit="animalRegister()">  
+
  <div class="row">
-  <h2>Animais</h2>  
-  <p>Cadastrar/Alterar</p>
-  <div ng-init="findAnimalById()"></div>   
+   <div class="col-md-12">
+     <h2>Animais</h2>  
+     <p>Cadastrar/Alterar</p>   
+   </div>
+ </div>   
 
   <div class="row">    
     <div ng-init="getVets()" class="col-md-12" ng-controller="VetCtrl">        
       <label>Veternário Responsável</label>             
       <select class="form-control" 
               ng-model="$parent.animal.vet_id"                  
-              ng-options="vet.id as vet.name for vet in vets">             
+              ng-options="vet.id as vet.name for vet in vets" 
+              required>             
         <option value="">--Selecione uma opção--</option>
       </select>         
     </div>             
@@ -22,7 +28,8 @@
               ng-change="findBreedsByType()" 
               ng-model="$parent.animal.type_id" 
               ng-options="type.id as type.name for type in types"
-              ng-controller="BreedCtrl">
+              ng-controller="BreedCtrl" 
+              required>
         <option value="">--Selecione uma opção--</option>
       </select>        
     </div>             
@@ -33,7 +40,8 @@
       <label>Raça do Animal</label> 
       <select class="form-control" 
               ng-model="$parent.animal.breed_id" 
-              ng-options="breed.id as breed.name for breed in breeds">
+              ng-options="breed.id as breed.name for breed in breeds" 
+              required>
         <option value="">--Selecione uma opção--</option>
       </select>     
     </div>             
@@ -42,21 +50,21 @@
   <div class="row">
     <div class="col-md-12">    
       <label>Nome</label><br>
-      <input type="text" ng-model="animal.name" class="form-control">
+      <input type="text" ng-model="animal.name" maxlength="255" class="form-control" required>
     </div>
   </div>
 
  <div class="row">
     <div class="col-md-12">    
       <label>Alimentação</label><br>
-      <input type="text" ng-model="animal.food_types" class="form-control">
+      <input type="text" ng-model="animal.food_types" maxlength="255" class="form-control">
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">        
       <label>Data de Nascimento/Idade</label>
-      <input type="text" ng-model="animal.birth_date" class="form-control">                         
+      <input type="text" ng-model="animal.birth_date" maxlength="255" class="form-control">                         
     </div> 
   </div>
 
@@ -84,14 +92,14 @@
   <div class="row">
     <div class="col-md-12">    
       <label>Coloração</label><br>
-      <input type="text" ng-model="animal.color" class="form-control">
+      <input type="text" ng-model="animal.color" maxlength="255" class="form-control">
     </div>
   </div>
 
   <div class="row"> 
     <div class="col-md-12">
-      <label>Obserções</label><br>
-      <textarea style="max-height: 50px;" class="form-control" ng-model="animal.notes"></textarea>        
+      <label>Observações</label><br>
+      <textarea id="animal-text-area" ng-model="animal.notes" ng-keyup="textareaNotes(255)" class="form-control"></textarea>        
     </div>
   </div>      
   

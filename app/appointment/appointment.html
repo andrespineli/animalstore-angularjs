@@ -1,4 +1,5 @@
 <div ng-init="findAppointmentById()"></div>
+
 <form ng-submit="appointmentRegister()">
 	
   <div class="row">
@@ -11,115 +12,122 @@
 	<div class="row">
 		<div class="col-md-12">							
 			<label>Data da Consulta</label>
-			<input type="text" ng-model="appointment.appointment_date" class="form-control"  ui-date-mask="DD/MM/YYYY">							      								     	 
+			<input type="text" ng-model="appointment.appointment_date" class="form-control"  ui-date-mask="DD/MM/YYYY" required>							      								     	 
 		</div>	
 	</div>
 	
 	<div class="row">
 		<div class="col-md-12">
-			<label>Temperatura</label><br>
-			<input maxlength="10" type="text" ng-model="appointment.temperature" class="form-control" ui-number-mask="1">
+			<label>Temperatura</label>
+			<input type="text" ng-model="appointment.temperature" maxlength="10" class="form-control" ui-number-mask="1">
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="col-md-12">
-			<label>FC</label><br>
-			<input maxlength="255" type="text" ng-model="appointment.fc" class="form-control" >
+			<label>FC</label>
+			<input maxlength="255" type="text" ng-model="appointment.fc" maxlength="255" class="form-control" >
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>TPC</label><br>
-			<input maxlength="255" type="text" ng-model="appointment.tpc" class="form-control" >
+			<label>TPC</label>
+			<input maxlength="255" type="text" ng-model="appointment.tpc" maxlength="255" class="form-control" >
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>FR</label><br>
-			<input maxlength="255" type="text" ng-model="appointment.fr" class="form-control" >
+			<label>FR</label>
+			<input maxlength="255" type="text" ng-model="appointment.fr" maxlength="255" class="form-control" >
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>Mucosa</label><br>
-			<input maxlength="255" type="text" ng-model="appointment.mucosa" class="form-control" >
+			<label>Mucosa</label>
+			<input maxlength="255" type="text" ng-model="appointment.mucosa" maxlength="255" class="form-control" >
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>Estado Fisico</label><br>
-			<input maxlength="255" type="text" ng-model="appointment.physical_condition" class="form-control">
+			<label>Estado Fisico</label>
+			<input maxlength="255" type="text" ng-model="appointment.physical_condition" maxlength="255" class="form-control">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>Hidratação</label><br>
-			<input maxlength="255" type="text" ng-model="appointment.hydration" class="form-control">
+			<label>Hidratação</label>
+			<input maxlength="255" type="text" ng-model="appointment.hydration" maxlength="255" class="form-control">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>Data Vermifugo</label><br>
+			<label>Data Vermifugo</label>
 			<input  type="text" ng-model="appointment.vermifuge_date" class="form-control" ui-date-mask="DD/MM/YYYY">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>Data Ultima Vacina Raiva</label><br>
+			<label>Data Ultima Vacina Raiva</label>
 			<input type="text" ng-model="appointment.rabies_vaccine_date" class="form-control" ui-date-mask="DD/MM/YYYY">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>Data Ultima Vacina Polivalente</label><br>
+			<label>Data Ultima Vacina Polivalente</label>
 			<input type="text" ng-model="appointment.multipurpose_vaccine_date" class="form-control" ui-date-mask="DD/MM/YYYY">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
-			<label>Comportamento</label><br>
-			<textarea ng-keyup="textareaComportamento(500)" id="appointment-text-area" class="form-control" ng-model="appointment.behavior"></textarea>        
+			<label>Comportamento</label> 
+			<span ng-if="behaviorMaxLength" class="small">(Max: {{appointment.behavior.length}} / {{behaviorMaxLength}})</span>
+			<textarea id="appointment-text-area" ng-model="appointment.behavior" ng-keyup="textareaBehavior(500)" class="form-control" ></textarea>        
 		</div>				          
 	</div>
 	
 	<div class="row">
 		<div class="col-md-12">
-			<label>Anamnese</label><br>
-			<textarea ng-keyup="textareaAnamnese(2000)" id="appointment-text-area" class="form-control" ng-model="appointment.anamnesis"></textarea>   				 
+			<label>Anamnese</label>
+			<span ng-if="anamnesisMaxLength" class="small">(Max: {{appointment.anamnesis.length}} / {{anamnesisMaxLength}})</span>
+			<textarea id="appointment-text-area" ng-model="appointment.anamnesis" ng-keyup="textareaAnamnesis(2000)" class="form-control" ></textarea>   				 
 		</div>         				         
 	</div>
 	
 	<div class="row">
 		<div class="col-md-12">
-			<label>Exames Solicitados</label><br>
-			<textarea ng-keyup="textareaExames(500)" id="appointment-text-area" class="form-control" ng-model="appointment.requested_exams"></textarea>   				   
+			<label>Exames Solicitados</label>
+			<span ng-if="examsMaxLength" class="small">(Max: {{appointment.requested_exams.length}} / {{examsMaxLength}})</span>
+			<textarea id="appointment-text-area" ng-model="appointment.requested_exams" ng-keyup="textareaExams(500)" class="form-control" ></textarea>   				   
 		</div>      
 	</div>
 	
 	<div class="row">
 		<div class="col-md-12">
-			<label>Diagnostico</label><br>
-			<textarea ng-keyup="textareaDiagnostico(2000)" id="appointment-text-area" class="form-control" ng-model="appointment.diagnosis"></textarea>     				 
+			<label>Diagnostico</label>
+			<span ng-if="diagnosisMaxLength" class="small">(Max: {{appointment.diagnosis.length}} / {{diagnosisMaxLength}})</span><br>
+			<textarea id="appointment-text-area" ng-model="appointment.diagnosis" ng-keyup="textareaDiagnosis(2000)" class="form-control" ></textarea>     				 
 		</div>       
 	</div>
 	
 	<div class="row">
 		<div class="col-md-12">
-			<label>Proçedimento e Tratamento</label><br>
-			<textarea ng-keyup="textareaProcedimento(2000)" id="appointment-text-area" class="form-control" ng-model="appointment.treatment"></textarea>  			    
+			<label>Proçedimento e Tratamento</label>
+			<span ng-if="treatmentMaxLength" class="small">(Max: {{appointment.treatment.length}} / {{treatmentMaxLength}})</span><br>
+			<textarea id="appointment-text-area" ng-model="appointment.treatment" ng-keyup="textareaTreatment(2000)" class="form-control" ></textarea>  			    
 		</div>         			        
 	</div>
+
 	<br>
+
 	<div class="row">
     <div class="col-md-12" align="right">             
       <button type="submit" class="btn btn-primary">
@@ -127,7 +135,6 @@
         Salvar
       </button>       
     </div>
-  </div>     
-	<br><br><br>
-	
+	</div>   
+		
 </form>

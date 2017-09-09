@@ -1,176 +1,187 @@
+<div ng-init="getOwners()"></div> 
+<div ng-init="findOwnerById()"></div>    
 
+<form ng-submit="ownerRegister()">
 
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Clientes</h2>
+      <p>Cadastrar novo cliente</p>
+    </div>
+  </div>
 
- <body class="container-fluid">   
-  <div ng-init="findOwnerById()"></div>
-  <div ng-init="desCarregaBack()" class="form-group">      
-    <form ng-submit="ownerRegister()">
+  <div class="row">  
+    <div class="col-md-12">      
+      <label>Nome</label><br>
+        <input type="text" ng-model="owner.name" maxlength="255" class="form-control" required>
+    </div>
+  </div>
+   <div class="row"> 
+    <div class="col-md-12">
+      <label>CPF</label><br>
+      <input type="text" ng-model="owner.document_number_cpf" class="form-control" ui-br-cpf-mask>
+     </div>
+  </div> 
 
-     <div class="row">  
-        <div class="col-md-12">
-          <h2>Clientes</h2>
-          <p>Cadastrar novo cliente</p>
-          <label>Nome</label><br>
-            <input type="text" ng-model="owner.name" class="form-control">
-        </div>
-      </div>
+  <div class="row"> 
+    <div class="col-md-12">
+      <label>RG</label><br>
+      <input type="text" ng-model="owner.document_number_rg" max="11" class="form-control">
+    </div>
+  </div>
 
-      <div class="row"> 
-        <div class="col-md-12">
-          <label>CPF</label><br>
-          <input type="text" ng-model="owner.document_number_cpf" class="form-control" ui-br-cpf-mask>
-         </div>
-      </div> 
+  <div class="row">
+    <div class="col-md-12">        
+      <label>Data de nascimento</label>
+      <input type="text" ng-model="owner.birth_date" class="form-control" ui-date-mask>                         
+    </div> 
+  </div>
 
-      <div class="row"> 
-       <div class="col-md-12">
-          <label>RG</label><br>
-            <input type="text" ng-model="owner.document_number_rg" class="form-control">
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Endereço</label><br>
+      <input type="text" ng-model="owner.address" max="255" placeholder="Ex: Av. Brasil, 31, Centro, Apt. 204" class="form-control">
+    </div>
+  </div>    
 
-     <div class="row">
-        <div class="col-md-12">        
-          <label>Data de nascimento</label>
-          <input type="text" ng-model="owner.birth_date" class="form-control" ui-date-mask>                         
-        </div> 
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Cidade</label><br>
+        <input type="text" ng-model="owner.city" max="60" class="form-control">
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <label>Endereço</label><br>
-          <input type="text" ng-model="owner.address" class="form-control">
-        </div>
-      </div>    
+  <div class="row">
+    <div class="col-md-12">
+      <label>CEP</label><br>
+      <input type="text" ng-model="owner.postal_code" class="form-control" ui-br-cep-mask>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <label>Cidade</label><br>
-            <input type="text" ng-model="owner.city" class="form-control">
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Estado</label><br>      
+      <select ng-model="owner.state" class="form-control">         
+        <option value="">--Selecione--</option>         
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option> 
+      </select>      
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <label>CEP</label><br>
-          <input type="text" ng-model="owner.postal_code" class="form-control">
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Sexo</label><br>      
+      <select ng-model="owner.gender" class="form-control">         
+        <option value="">--Selecione--</option>         
+        <option value="1">Masculino</option>   
+        <option value="0">Feminino</option>      
+      </select>      
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <label>Estado</label><br>      
-          <select ng-model="owner.state" class="form-control">         
-            <option value="">--Selecione--</option>         
-            <option value="AC">Acre</option>
-            <option value="AL">Alagoas</option>
-            <option value="AP">Amapá</option>
-            <option value="AM">Amazonas</option>
-            <option value="BA">Bahia</option>
-            <option value="CE">Ceará</option>
-            <option value="DF">Distrito Federal</option>
-            <option value="ES">Espírito Santo</option>
-            <option value="GO">Goiás</option>
-            <option value="MA">Maranhão</option>
-            <option value="MT">Mato Grosso</option>
-            <option value="MS">Mato Grosso do Sul</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="PA">Pará</option>
-            <option value="PB">Paraíba</option>
-            <option value="PR">Paraná</option>
-            <option value="PE">Pernambuco</option>
-            <option value="PI">Piauí</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="RN">Rio Grande do Norte</option>
-            <option value="RS">Rio Grande do Sul</option>
-            <option value="RO">Rondônia</option>
-            <option value="RR">Roraima</option>
-            <option value="SC">Santa Catarina</option>
-            <option value="SP">São Paulo</option>
-            <option value="SE">Sergipe</option>
-            <option value="TO">Tocantins</option> 
-          </select>      
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Telefone Residencial</label><br>
+      <input type="text" ng-model="owner.phone_number" class="form-control" ui-br-phone-number>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <label>Sexo</label><br>      
-          <select ng-model="owner.gender" class="form-control">         
-            <option value="">--Selecione--</option>         
-            <option value="1">Masculino</option>   
-            <option value="0">Feminino</option>      
-          </select>      
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <label>Telefone Residencial</label><br>
-          <input type="text" ng-model="owner.phone_number" class="form-control" ui-br-phone-number>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <label>Telefone Celular</label><br>
-          <input type="text" ng-model="owner.cell_number" class="form-control" ui-br-phone-number>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Telefone Celular</label><br>
+      <input type="text" ng-model="owner.cell_number" class="form-control" ui-br-phone-number>
+    </div>
+  </div>
            
-      <div class="row">
-        <div class="col-md-12">
-          <label>E-mail</label><br>
-          <input type="email" ng-model="owner.email"  class="form-control">    
-        </div>
-      </div>    
-    	  	
-    	<div class="row">
-        <div class="col-md-12" align="right"><br>     
-    	  	<button type="submit" class="btn btn-primary">
-            <div class="glyphicon glyphicon-floppy-saved"></div> 
-              Salvar
-          </button>		  		
-        </div>
-    	</div>
-    </form>
-  </div>            
-  <p>Clientes cadastrados</p> 
-  <div ng-init="getOwners()"></div> 
+  <div class="row">
+    <div class="col-md-12">
+      <label>E-mail</label><br>
+      <input type="email" ng-model="owner.email" max="255" class="form-control">    
+    </div>
+  </div>    
+  <br> 	  	
+  <div class="row">
+    <div class="col-md-12" align="right">     
+    	<button type="submit" class="btn btn-primary">
+        <div class="glyphicon glyphicon-floppy-saved"></div> 
+        Salvar
+      </button>		  		
+    </div>
+  </div>
+</form>
+            
+<p>Clientes cadastrados</p> 
+
+<div class="row">
+  <div class="col-md-12">       
+    <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+  </div>   
+ </div>
+
   <table class="table table-striped">
     <thead>
       <tr>                
-        <th class="col-md-11 small">Nome</th>  
-        <th class="col-md-1 small"><center>Opções</center></th>
+        <th class="col-md-5 small">NOME</th>  
+        <th class="col-md-3 small">TELEFONE</th>  
+        <th class="col-md-3 small">CELULAR</th>  
+        <th class="col-md-1 small" id="table-options">OPÇÕES</th>
       </tr>
     </thead>
     <tbody >
       <tr dir-paginate="o in owners | filter: searchKeyword |itemsPerPage:15 track by $index">       
-        <td>{{o.name}}</td>         
-        <td>             
-          <center>                         
-            <a id="a-decoration" href="#/owners/{{o.id}}">
-              <button  class="btn btn-warning btn-sm">
-                <div class="glyphicon glyphicon-pencil"></div>                            
-              </button>
-            </a>                        
-            <button ng-click="ownerRemove(o.id, o.name)" class="btn btn-danger btn-sm">
-              <div class="glyphicon glyphicon-remove"></div>                          
-            </button>
-         </center>                                           
+        <td>{{o.name}}</td>     
+        <td>{{o.phone_number | phone}}</td>  
+        <td>{{o.cell_number | phone}}</td>      
+        <td id="table-options">     
+
+          <a id="option-icon" 
+            title="Editar"      
+            class="btn btn-warning btn-sm glyphicon glyphicon-pencil"                        
+            href="#/owners/{{o.id}}">           
+          </a>    
+
+          <a id="option-icon" 
+            title="Excluir"      
+            class="btn btn-danger btn-sm glyphicon glyphicon-remove"                        
+            ng-click="ownerRemove(o.id, o.name)">           
+          </a>   
+                                                       
         </td>
       </tr>
     </tbody>
   </table>
   <dir-pagination-controls
     template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
-       max-size="5"
-       direction-links="true"
-       boundary-links="true" >
-    </dir-pagination-controls>    
-    <br><br>
-</body>    
-
+    max-size="5"
+    direction-links="true"
+    boundary-links="true" >
+  </dir-pagination-controls>    
 
 
 

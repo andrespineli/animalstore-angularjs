@@ -1,60 +1,76 @@
-<div  class="container-fluid">   
-  <div ng-init="desCarregaBack()" class="form-group">  
-    <div ng-init="getTypes()"></div>
-    <div ng-init="findTypeById()"></div>
-      <form ng-submit="typeRegister()">          
-        <div class="row">  
-          <div class="col-md-12">
-            <h2>Espécies</h2>
-            <p>Cadastrar nova espécie</p> 
-            <label class="small">Nome</label><br>
-            <input type="text" ng-model="type.name" class="form-control">
-          </div>
-        </div>
-        <br>                	  	
-      	<div class="row">
-          <div class="col-md-12" align="right">             
-            <button type="submit" class="btn btn-primary">
-              <div class="glyphicon glyphicon-floppy-saved"></div> 
-              Salvar
-            </button>       
-          </div>
-        </div>     
-      </form>        
-    </div>      
-    <p>Tipos de animal cadastrados</p> 
-    <table class="table table-striped">
-    <thead>
-      <tr>                
-        <th class="col-md-11 small">Nome</th>        
-        <th class="col-md-1 small">Opções</th>
-      </tr>
-    </thead>
-    <tbody >
-      <tr dir-paginate="t in types | filter: searchKeyword |itemsPerPage:5 track by $index">       
-        <td>{{t.name}}</td>                     
-        <td> 
-          <center>                         
-            <a id="a-decoration" href="#/types/{{t.id}}">
-              <button  class="btn btn-warning btn-sm">
-                <div class="glyphicon glyphicon-pencil"></div>                            
-              </button>
-            </a>                        
-              <button ng-click="typeRemove(t.id, t.name)" class="btn btn-danger btn-sm">
-                <div class="glyphicon glyphicon-remove"></div>                          
-              </button>
-          </center>                              
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <dir-pagination-controls
-    template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
-    max-size="5"
-    direction-links="true"
-    boundary-links="true" >
-  </dir-pagination-controls>       
+<div ng-init="getTypes()"></div>
+<div ng-init="findTypeById()"></div>
+
+<form ng-submit="typeRegister()">   
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Espécies</h2>
+      <p>Cadastrar nova espécie</p> 
+    </div>
+  </div>
+
+  <div class="row">  
+    <div class="col-md-12">      
+      <label class="small">Nome</label><br>
+      <input type="text" ng-model="type.name" max="255" class="form-control" required>
+    </div>
+  </div>
+  <br>             	  	
+ 	<div class="row">
+    <div class="col-md-12" align="right">             
+      <button type="submit" class="btn btn-primary">
+        <div class="glyphicon glyphicon-floppy-saved"></div> 
+        Salvar
+      </button>       
+    </div>
+  </div>     
+
+</form>        
+   
+<p>Espécies cadastradas</p> 
+
+<div class="row">
+  <div class="col-md-12">       
+    <input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+  </div>   
 </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>                
+      <th class="col-md-11 small">NOME</th>        
+      <th class="col-md-1 small" id="table-options">OPÇÕES</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr dir-paginate="t in types | filter: searchKeyword |itemsPerPage:5 track by $index">       
+      <td>{{t.name}}</td>                     
+      <td id="table-options"> 
+
+        <a id="option-icon" 
+					title="Editar"      
+					class="btn btn-warning btn-sm glyphicon glyphicon-pencil"                        
+					href="#/types/{{t.id}}">           
+				</a>    
+
+				<a id="option-icon" 
+					title="Excluir"      
+					class="btn btn-danger btn-sm glyphicon glyphicon-remove"                        
+					ng-click="typeRemove(t.id, t.name)">           
+        </a>              
+                                     
+      </td>
+    </tr>
+  </tbody>
+</table>
+<dir-pagination-controls
+  template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+  max-size="5"
+  direction-links="true"
+  boundary-links="true" >
+</dir-pagination-controls>       
+
  
 
 

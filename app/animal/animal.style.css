@@ -33,3 +33,10 @@
     padding: 8px 4px 8px 4px;
     vertical-align: middle;
 }
+
+#animal-text-area {
+    max-width: 100%; 
+    min-width: 100%; 
+    min-height: 100px; 
+    max-height: 70px;
+}

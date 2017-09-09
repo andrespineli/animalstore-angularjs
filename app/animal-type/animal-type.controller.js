@@ -5,7 +5,7 @@ angular.module('animalStoreApp')
       $http.get(Api.setUriAndReturnAddress('animals/types'))
       .then(function onSuccess(response) {    
         if (response.data.data == '') {
-          Alert.send('Nenhum tipo de animal cadastrado', 'info', 3);
+          Alert.send('Nenhuma espécie cadastrada', 'info', 3);
         }
         $scope.types = response.data.data;        
       })
