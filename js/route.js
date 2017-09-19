@@ -17,6 +17,21 @@ angular.module(
         controller: 'HomeCtrl',
         controllerAs: 'home.controller'
       })
+      .when('/budgets', {
+        templateUrl: 'app/budget/budget.html',
+        controller: 'BudgetCtrl',
+        controllerAs: 'budget.controller'
+      })
+      .when('/budgets/:budget_id', {
+        templateUrl: 'app/budget/budget.html',
+        controller: 'BudgetCtrl',
+        controllerAs: 'budget.controller'
+      })
+      .when('/appointments/budgets/:appointment_id/:animal_name', {
+        templateUrl: 'app/appointment/budget-appointment.html',
+        controller: 'BudgetCtrl',
+        controllerAs: 'budget.controller'
+      })
       .when('/printable/service/:animal_id', {
         templateUrl: 'app/printable/sheet-service.html',
         controller: 'PrintableCtrl',

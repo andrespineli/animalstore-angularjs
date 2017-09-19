@@ -1,0 +1,85 @@
+<div ng-init="getBudgets()"></div>
+<div ng-init="findBudgetById()"></div> 		      
+
+<form ng-submit="budgetRegister()"> 
+
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Serviços</h2>   
+			<p>Cadastrar novo serviço</p>	  
+		</div>
+	</div>		
+
+	<div class="row">	
+		<div class="col-md-12">			
+			<label>Descrição</label><br>
+		    <input type="text" ng-model="budget.description" maxlength="255" class="form-control" required>
+		</div>
+	</div>
+
+	<div class="row"> 
+        <div class="col-md-12">
+                <label>Valor</label><br>
+            <input type="text" ng-model="budget.amount" class="form-control" ui-money-mask required>
+        </div>
+	</div> 
+	
+	<br>		
+
+	<div class="row">
+        <div class="col-md-12" align="right">   					
+			<button type="submit" class="btn btn-primary">
+				<div class="glyphicon glyphicon-floppy-saved"></div> 
+				Salvar
+            </button>	
+        </div>			
+    </div>
+</form>
+
+<p>Serviços cadastrados</p>	
+
+<div class="row">
+	<div class="col-md-12">       
+		<input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+	</div>   
+</div>
+      	        	  
+<table class="table table-striped">
+	<thead>
+    <tr>                
+		<th class="col-md-8 small">DESCRIÇÃO</th> 
+		<th class="col-md-3 small">VALOR</th> 			
+	    <th class="col-md-1 small" id="table-options">OPÇÕES</th>
+    </tr>
+	</thead>
+  <tbody >
+    <tr dir-paginate="b in budgets | filter: searchKeyword |itemsPerPage:5 track by $index">       
+	    <td>{{b.description}}</td>
+		<td>{{b.amount | currency: 'R$'}}</td>
+			
+                 
+      <td id="table-options">                 
+				
+				<a id="option-icon" 
+					title="Editar"      
+					class="btn btn-warning btn-sm glyphicon glyphicon-pencil"                        
+					href="#/budgets/{{b.id}}">           
+				</a>    
+
+				<a id="option-icon" 
+					title="Excluir"      
+					class="btn btn-danger btn-sm glyphicon glyphicon-remove"                        
+					ng-click="budgetRemove(b.id, b.description)">           
+				</a>   				
+                   
+		  </td>
+	  </tr>
+	</tbody>
+</table>
+<dir-pagination-controls
+  	template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+   max-size="5"
+   direction-links="true"
+   boundary-links="true" >
+</dir-pagination-controls>    
+              
