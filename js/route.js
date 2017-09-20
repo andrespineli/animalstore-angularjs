@@ -4,8 +4,7 @@ angular.module(
     'ngResource', 
     'ngStorage',
     'angularUtils.directives.dirPagination',
-    'ui.utils.masks',
-    
+    'ui.utils.masks',    
     'brasil.filters'
   ])
   .config(function($routeProvider, $httpProvider, $locationProvider) {  
@@ -27,10 +26,15 @@ angular.module(
         controller: 'BudgetCtrl',
         controllerAs: 'budget.controller'
       })
-      .when('/appointments/budgets/:appointment_id/:animal_name', {
-        templateUrl: 'app/appointment/budget-appointment.html',
-        controller: 'BudgetCtrl',
-        controllerAs: 'budget.controller'
+      .when('/budgets/appointment/:appointment_id/:animal_name/:animal_id', {
+        templateUrl: 'app/budget-appointment/budget-appointment.html',
+        controller: 'BudgetAppointmentCtrl',
+        controllerAs: 'budget-appointment.controller'
+      })
+      .when('/printable/budget/:appointment_id/:animal_id', {
+        templateUrl: 'app/printable/sheet-budget.html',
+        controller: 'PrintableCtrl',
+        controllerAs: 'printable.controller'
       })
       .when('/printable/service/:animal_id', {
         templateUrl: 'app/printable/sheet-service.html',
@@ -42,7 +46,7 @@ angular.module(
         controller: 'PrintableCtrl',
         controllerAs: 'printable.controller'
       })
-      .when('/appointments/:animal_id/:animal_name', {
+      .when('/appointments/:animal_id/:animal_name/:animal_id', {
         templateUrl: 'app/appointment/appointment-list.html',
         controller: 'AppointmentCtrl',
         controllerAs: 'appointment.controller'

@@ -35,6 +35,10 @@
     height: 300px;
 }
 
+#total-column { 
+    width: 86%;
+}
+
 #printable-table {
     text-align: justify;
     vertical-align: middle;

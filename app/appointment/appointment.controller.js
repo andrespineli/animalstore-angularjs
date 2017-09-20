@@ -6,7 +6,8 @@ angular.module('animalStoreApp')
   }
  
   $scope.getAnimalAppointments = function () {       
-      $scope.animal_name = $routeParams.animal_name;  
+    $scope.animal_name = $routeParams.animal_name;  
+    $scope.animal_id = $routeParams.animal_id;  
     if($routeParams.animal_id){
       $http.get(Api.setUriAndReturnAddress('animals/' + $routeParams.animal_id + '/appointments'))
       .then(function onSuccess(response) {    

@@ -1,0 +1,100 @@
+<div ng-init="getBudgetAppointmentSheet()"></div>
+<div class="page-printable" id="sheet-service-table-1" ng-repeat="ba in budgetsAppointmentSheet">
+  <div class="row">
+    <div id="logo" align="left" class="col-md-6">AnimalStore</div>
+    <div id="date" align="right" class="col-md-6">___/___/___</div>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <th id="title" colspan="2">FICHA DE ATENDIMENTO</th>
+    </tr>
+    <tr>
+      <td>Proprietario:</td>
+      <td id="appointment-column">{{ba.owner}}</td>
+    </tr>
+    <tr>
+      <td>Data Nascimento:</td>
+      <td>{{ba.owner_birth | formatDate}}</td>
+    </tr>
+    <tr>
+      <td>CPF:</td>
+      <td>{{ba.document_number_cpf | cpf}}</td>
+    </tr>
+    <tr>
+      <td>RG:</td>
+      <td>{{ba.document_number_rg}}</td>
+    </tr>
+    <tr>
+      <td>Endereço:</td>
+      <td>{{ba.address}}</td>
+    </tr>
+    <tr>
+      <td>Cidade:</td>
+      <td>{{ba.city}}</td>
+    </tr>
+    <tr>
+      <td>Estado:</td>
+      <td>{{ba.state}}</td>
+    </tr>
+  </table>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <th id="title" colspan="2">DADOS DO PACIENTE</th>
+    </tr>
+    <tr>
+      <td>Nome:</td>
+      <td id="appointment-column">{{ba.animal}}</td>
+    </tr>
+    <tr>
+      <td>Espécie:</td>
+      <td>{{ba.type}}</td>
+    </tr>
+    <tr>
+      <td>Raça:</td>
+      <td>{{ba.breed}}</td>
+    </tr>
+    <tr>
+      <td>Coloração:</td>
+      <td>{{ba.color}}</td>
+    </tr>
+    <tr>
+      <td>Alimentação:</td>
+      <td>{{ba.food_types}}</td>
+    </tr>
+    <tr>
+      <td>Nascimento:</td>
+      <td>{{ba.animal_birth}}</td>
+    </tr>
+    <tr>
+      <td>Sexo:</td>
+      <td ng-if="ba.gender == 1">Macho</td>
+      <td ng-if="ba.gender == 0">Fêmea</td>
+    </tr>
+    <tr>
+      <td>Peso:</td>
+      <td>{{ba.weight | number:1}} KG</td>
+    </tr>
+  </table>
+  <br>
+  <table class="table table-bordered">
+      <tr>
+        <th id="title" colspan="2">SERVIÇOS</th>
+      </tr>
+     <tr>
+      <td>Descrição</td>
+      <td>Valor</td>
+     </tr>
+     <tr ng-repeat="b in ba.budget_appointment">       
+       <td>{{b.description}}</td>
+       <td>{{b.amount | currency: 'R$'}}</td>
+     </tr>     
+    </table>
+    <table class="table table-bordered">
+      <tr>
+        <td id="total-column">TOTAL</td>
+        <td><b>{{ba.total_amount | currency: 'R$'}}</b></td>
+      </tr>
+    </table>
+</div>

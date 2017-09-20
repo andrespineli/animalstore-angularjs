@@ -1,0 +1,87 @@
+<div ng-init="getBudgetsAppointments()"></div> 
+
+<div class="row">
+	<div class="col-md-12">
+		<h1>Orçamentos/Serviços Realizados</h1>
+	</div>
+</div>
+
+<div class="row">
+  <div class="col-md-6" align="left">   		
+    <br> 
+    <p id="animal-appointment"><b>Paciente:</b> {{animal_name}}</p>
+  </div>
+  <div class="col-md-6" align="right">    
+    <a id="option-icon" 
+       title="Imprimir Ficha de Serviços"               
+       class="glyphicon glyphicon-print btn btn-success"
+       ng-controller="MainCtrl"                           
+       ng-click="budgetAppointmentPrintable()">      
+    </a>        
+   
+  </div>
+</div>          
+
+<div class="row">    
+  <div ng-init="getBudgets()" class="col-md-12" ng-controller="BudgetCtrl">        
+    <label>Serviço</label>                 
+    <select class="form-control" ng-model="$parent.budgetAppointment.budget_id">      
+      <option value="">--Selecione--</option>         
+      <option ng-selected="{{budgetAppointment.budget_id == b.id}}" 
+         ng-repeat="b in budgets"
+          value="{{b.id}}">
+        {{b.description}} - {{b.amount | currency: 'R$'}}
+    </select>          
+  </div>             
+</div>
+
+<br>  
+
+<div class="row">
+  <div class="col-md-12" align="right" >   
+    <button type="submit" class="btn btn-primary" ng-click="budgetAppointmentRegister(budgetAppointment.budget_id)">
+      <div class="glyphicon glyphicon-plus"></div> 
+      Adicionar
+    </button>		  		
+  </div>
+</div>      
+ 
+<br>
+
+<div class="row">
+	<div class="col-md-12">       
+		<input ng-model="searchKeyword" type="text" class="form-control" placeholder="Pesquisar"> 
+	</div>    
+</div>
+	
+<table class="table" ng-if="budgetsAppointment != ''">  
+	<thead>		     
+		<th class="col-md-5 small">DESCRIÇÃO</th>    
+		<th class="col-md-6 small">VALOR</th>      
+		<th class="col-md-1 small" id="table-options">OPÇÕES</th>		
+	</thead>
+	<tbody dir-paginate="ba in budgetsAppointment | filter: searchKeyword | itemsPerPage:5">
+		<tr>  	                
+			<td id="appointment-table">{{ba.description}}</td> 	            
+      <td id="appointment-table">{{ba.amount | currency: 'R$'}}</td> 
+			<td id="table-options"> 
+				<a id="option-icon" 
+				   title="Remover Consulta"               
+					 class="glyphicon glyphicon-remove btn btn-danger"
+					 ng-controller="MainCtrl"                           
+	  			 ng-click="budgetAppointmentRemove(ba.id, ba.description, animal_name)">
+				</a>			                 
+			</td>
+			<tr dir-paginate-end=""><td class="col-md-12" colspan="4" id="animal-list-bottom"></td></tr>    
+		</tr>				
+	</tbody>
+</table>
+	
+<dir-pagination-controls
+	template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"
+	max-size="5"
+	direction-links="true"
+	boundary-links="true" >
+</dir-pagination-controls> 	      
+
+

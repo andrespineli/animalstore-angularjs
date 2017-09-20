@@ -1,0 +1,9 @@
+#panel-left {
+    vertical-align: middle;
+    float: left;
+}
+
+#panel-right {
+    vertical-align: middle;
+    float: right;
+}

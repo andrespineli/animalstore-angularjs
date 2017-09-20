@@ -43,4 +43,25 @@ angular.module('animalStoreApp')
     }      
   }  
 
+  $scope.getBudgetAppointmentSheet = function () {         
+    if($routeParams.appointment_id && $routeParams.animal_id){
+      $http.get(Api.setUriAndReturnAddress('printable/budgets/'+$routeParams.animal_id+'/'+$routeParams.appointment_id))
+      .then(function onSuccess(response) {    
+        if (response.data == '') {
+          Alert.send('Nenhum serviço cadastrado', 'info', 3);
+          console.log(response)                
+        }
+        $scope.budgetsAppointmentSheet = response.data;    
+        console.log(response.data)      
+        setTimeout(function() {
+            window.print();
+           // history.back();
+        }, printableDelaySeconds * 1000);
+      })
+      .catch(function onError(response) { 
+        console.log(response);               
+      });             
+    }      
+  }  
+
 });
